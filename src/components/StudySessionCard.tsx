@@ -97,9 +97,20 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
       </div>
 
       {/* 説明 */}
-      <p className="text-cyan-200 mb-4 line-clamp-3 flex-grow leading-relaxed text-sm">
-        {session.description}
-      </p>
+      <div className="relative group/desc mb-4 flex-grow">
+        <p className="text-cyan-200 line-clamp-3 leading-relaxed text-sm cursor-pointer">
+          {session.description}
+        </p>
+        {/* ホバー時の全文表示 */}
+        <div className="absolute z-50 bottom-full left-0 right-0 mb-2 p-4 bg-dark-900/95 backdrop-blur-sm 
+                        border border-cyber-500/50 rounded-lg shadow-neon-blue/20 shadow-2xl 
+                        opacity-0 invisible group-hover/desc:opacity-100 group-hover/desc:visible 
+                        transition-all duration-300 pointer-events-none">
+          <p className="text-cyan-200 text-sm leading-relaxed">
+            {session.description}
+          </p>
+        </div>
+      </div>
 
       {/* タグ */}
       <div className="flex flex-wrap gap-2 mb-4">
@@ -139,19 +150,22 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
           )}
         </div>
         
-        <Link
-          href={`/sessions/${session.id}`}
-          className="group/button relative btn-cyber-primary text-sm flex items-center overflow-hidden"
-        >
-          <span className="relative z-10 flex items-center">
-            VIEW
-            <ExternalLink className="h-4 w-4 ml-2 group-hover/button:scale-110 transition-transform duration-300" />
-          </span>
-          
-          {/* ボタンの光る効果 */}
-          <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 
-                          group-hover/button:opacity-20 transition-opacity duration-300 blur-sm"></div>
-        </Link>
+        {/* VIEWボタンを条件付きで表示（第28回、またはpodcastUrlがある場合のみ） */}
+        {(session.id === '28' || session.podcastUrl) && (
+          <Link
+            href={`/sessions/${session.id}`}
+            className="group/button relative btn-cyber-primary text-sm flex items-center overflow-hidden"
+          >
+            <span className="relative z-10 flex items-center">
+              VIEW
+              <ExternalLink className="h-4 w-4 ml-2 group-hover/button:scale-110 transition-transform duration-300" />
+            </span>
+            
+            {/* ボタンの光る効果 */}
+            <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 
+                            group-hover/button:opacity-20 transition-opacity duration-300 blur-sm"></div>
+          </Link>
+        )}
       </div>
       
       {/* カードの光る縁取り効果 */}

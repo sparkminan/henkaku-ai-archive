@@ -398,14 +398,14 @@ export default function Sessions() {
 
                 {/* セッション一覧 */}
                 {isLoading ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {[...Array(6)].map((_, index) => (
                       <SessionSkeleton key={index} />
                     ))}
                   </div>
                 ) : paginatedSessions.length > 0 ? (
                   <>
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {paginatedSessions.map((session) => (
                         <StudySessionCard key={session.id} session={session} />
                       ))}
