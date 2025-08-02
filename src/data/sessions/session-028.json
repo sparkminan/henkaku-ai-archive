@@ -1,0 +1,18 @@
+{
+  "id": "28",
+  "title": "生成AI会 - Web3とAIの交差点における探求",
+  "date": "2025-08-02",
+  "presenter": "コミュニティメンバー",
+  "description": "生成AIとWeb3テクノロジーの接点、コミュニティの現状、および将来の可能性について深く議論。Web3への慎重な姿勢を保ちながらも、AIを主軸に置いたアプローチを探求し、技術コミュニティの未来に向けた前向きで革新的な方向性を示しました。",
+  "tags": ["Web3", "AI融合", "コミュニティ", "技術展望", "ディスカッション"],
+  "materials": [
+    {
+      "id": "28-1",
+      "title": "Web3とAIの交差点 - ディスカッションサマリー",
+      "type": "document",
+      "url": "/documents/web3-ai-intersection-summary.md",
+      "description": "セッションの主要な論点と議論内容のまとめ"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}
