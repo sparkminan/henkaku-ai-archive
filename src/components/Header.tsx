@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Search, Menu, X, Zap } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
   onSearch?: (query: string) => void;
@@ -62,22 +63,30 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
             </Link>
           </nav>
 
-          {/* 検索バー */}
-          <div className="hidden md:flex items-center">
+          {/* 検索バーとテーマトグル */}
+          <div className="hidden md:flex items-center space-x-4">
             <form onSubmit={handleSearch} className="relative group">
               <input
                 type="text"
                 placeholder="Search sessions..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-64 pl-12 pr-4 py-2 bg-dark-700/80 border border-cyber-500/50 rounded-lg 
-                         text-cyan-100 placeholder-cyan-400 focus:border-neon-blue focus:ring-2 
-                         focus:ring-neon-blue/50 focus:outline-none transition-all duration-300
-                         group-hover:border-cyber-400"
+                className="w-64 pl-12 pr-4 py-2 bg-dark-700/80 dark:bg-dark-700/80 light:bg-white 
+                         border border-cyber-500/50 dark:border-cyber-500/50 light:border-gray-300 rounded-lg 
+                         text-cyan-100 dark:text-cyan-100 light:text-gray-900 
+                         placeholder-cyan-400 dark:placeholder-cyan-400 light:placeholder-gray-500 
+                         focus:border-neon-blue dark:focus:border-neon-blue light:focus:border-blue-500 
+                         focus:ring-2 focus:ring-neon-blue/50 dark:focus:ring-neon-blue/50 light:focus:ring-blue-500/50 
+                         focus:outline-none transition-all duration-300
+                         group-hover:border-cyber-400 dark:group-hover:border-cyber-400 light:group-hover:border-blue-400"
               />
-              <Search className="absolute left-4 top-2.5 h-5 w-5 text-cyber-400 group-hover:text-neon-blue transition-colors duration-300" />
-              <div className="absolute inset-0 bg-neon-blue opacity-0 rounded-lg blur-sm group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+              <Search className="absolute left-4 top-2.5 h-5 w-5 text-cyber-400 dark:text-cyber-400 light:text-gray-500 
+                               group-hover:text-neon-blue dark:group-hover:text-neon-blue light:group-hover:text-blue-500 
+                               transition-colors duration-300" />
+              <div className="absolute inset-0 bg-neon-blue dark:bg-neon-blue light:bg-blue-500 
+                            opacity-0 rounded-lg blur-sm group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
             </form>
+            <ThemeToggle />
           </div>
 
           {/* モバイルメニューボタン */}

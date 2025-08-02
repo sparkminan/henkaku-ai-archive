@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Filter, SortAsc, SortDesc, Search, Zap } from 'lucide-react';
+import { Filter, SortAsc, SortDesc, Search, Zap, Calendar } from 'lucide-react';
 import Layout from '@/components/Layout';
 import StudySessionCard from '@/components/StudySessionCard';
+import SessionSkeleton from '@/components/SessionSkeleton';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import { StudySession } from '@/types';
 import mockData from '@/data/mockData.json';
 
@@ -19,15 +21,22 @@ export default function Sessions() {
   const [sortOption, setSortOption] = useState<SortOption>('date-desc');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [dateRange, setDateRange] = useState<{ start: string; end: string }>({ start: '', end: '' });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setSessions(mockData.studySessions as StudySession[]);
-    setFilteredSessions(mockData.studySessions as StudySession[]);
-    
-    // URLパラメータからカテゴリを設定
-    if (category && typeof category === 'string') {
-      setSelectedCategory(category);
-    }
+    // データ読み込みをシミュレート
+    setIsLoading(true);
+    setTimeout(() => {
+      setSessions(mockData.studySessions as StudySession[]);
+      setFilteredSessions(mockData.studySessions as StudySession[]);
+      
+      // URLパラメータからカテゴリを設定
+      if (category && typeof category === 'string') {
+        setSelectedCategory(category);
+      }
+      setIsLoading(false);
+    }, 800);
   }, [category]);
 
   useEffect(() => {
@@ -70,6 +79,23 @@ export default function Sessions() {
       );
     }
 
+    // 日付フィルター
+    if (dateRange.start || dateRange.end) {
+      filtered = filtered.filter(session => {
+        const sessionDate = new Date(session.date);
+        if (dateRange.start && !dateRange.end) {
+          return sessionDate >= new Date(dateRange.start);
+        }
+        if (!dateRange.start && dateRange.end) {
+          return sessionDate <= new Date(dateRange.end);
+        }
+        if (dateRange.start && dateRange.end) {
+          return sessionDate >= new Date(dateRange.start) && sessionDate <= new Date(dateRange.end);
+        }
+        return true;
+      });
+    }
+
     // ソート
     filtered = [...filtered].sort((a, b) => {
       switch (sortOption) {
@@ -87,7 +113,7 @@ export default function Sessions() {
     });
 
     setFilteredSessions(filtered);
-  }, [sessions, selectedTags, sortOption, searchQuery, selectedCategory]);
+  }, [sessions, selectedTags, sortOption, searchQuery, selectedCategory, dateRange]);
 
   const allTags = Array.from(
     new Set(sessions.flatMap(session => session.tags))
@@ -200,6 +226,51 @@ export default function Sessions() {
                     </select>
                   </div>
 
+                  {/* 日付フィルター */}
+                  <div className="mb-6">
+                    <label className="block text-sm font-cyber font-medium text-cyber-300 mb-3 tracking-wider">
+                      DATE RANGE
+                    </label>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-xs text-cyan-400 mb-1">From</label>
+                        <input
+                          type="date"
+                          value={dateRange.start}
+                          onChange={(e) => setDateRange({ ...dateRange, start: e.target.value })}
+                          className="w-full p-2 bg-dark-700 dark:bg-dark-700 light:bg-white 
+                                   border border-cyber-500/50 dark:border-cyber-500/50 light:border-gray-300 
+                                   rounded-lg text-cyan-100 dark:text-cyan-100 light:text-gray-900
+                                   focus:border-neon-blue dark:focus:border-neon-blue light:focus:border-blue-500
+                                   focus:ring-2 focus:ring-neon-blue/50 dark:focus:ring-neon-blue/50 light:focus:ring-blue-500/50
+                                   focus:outline-none transition-all duration-300"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs text-cyan-400 mb-1">To</label>
+                        <input
+                          type="date"
+                          value={dateRange.end}
+                          onChange={(e) => setDateRange({ ...dateRange, end: e.target.value })}
+                          className="w-full p-2 bg-dark-700 dark:bg-dark-700 light:bg-white 
+                                   border border-cyber-500/50 dark:border-cyber-500/50 light:border-gray-300 
+                                   rounded-lg text-cyan-100 dark:text-cyan-100 light:text-gray-900
+                                   focus:border-neon-blue dark:focus:border-neon-blue light:focus:border-blue-500
+                                   focus:ring-2 focus:ring-neon-blue/50 dark:focus:ring-neon-blue/50 light:focus:ring-blue-500/50
+                                   focus:outline-none transition-all duration-300"
+                        />
+                      </div>
+                      {(dateRange.start || dateRange.end) && (
+                        <button
+                          onClick={() => setDateRange({ start: '', end: '' })}
+                          className="text-xs text-neon-pink hover:text-neon-blue transition-colors duration-300 font-cyber"
+                        >
+                          CLEAR DATE FILTER
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
                   {/* タグフィルター */}
                   <div>
                     <label className="block text-sm font-cyber font-medium text-cyber-300 mb-3 tracking-wider">
@@ -270,7 +341,13 @@ export default function Sessions() {
                 </div>
 
                 {/* セッション一覧 */}
-                {filteredSessions.length > 0 ? (
+                {isLoading ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {[...Array(6)].map((_, index) => (
+                      <SessionSkeleton key={index} />
+                    ))}
+                  </div>
+                ) : filteredSessions.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     {filteredSessions.map((session) => (
                       <StudySessionCard key={session.id} session={session} />
@@ -297,6 +374,7 @@ export default function Sessions() {
                           setSelectedTags([]);
                           setSearchQuery('');
                           setSelectedCategory('');
+                          setDateRange({ start: '', end: '' });
                           router.push('/sessions', undefined, { shallow: true });
                         }}
                         className="btn-cyber-primary group"
