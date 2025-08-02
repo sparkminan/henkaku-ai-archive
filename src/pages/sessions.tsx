@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Filter, SortAsc, SortDesc, Search, Zap, Calendar } from 'lucide-react';
+import { Filter, SortAsc, SortDesc, Search, Zap, Calendar, Heart } from 'lucide-react';
 import Layout from '@/components/Layout';
 import StudySessionCard from '@/components/StudySessionCard';
 import SessionSkeleton from '@/components/SessionSkeleton';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import Pagination from '@/components/Pagination';
 import { StudySession } from '@/types';
-import mockData from '@/data/mockData.json';
+import { loadAllSessions, getCategories } from '@/utils/dataLoader';
+import { useFavorites } from '@/contexts/FavoritesContext';
 
 type SortOption = 'date-desc' | 'date-asc' | 'title-asc' | 'title-desc';
 
 export default function Sessions() {
   const router = useRouter();
   const { category } = router.query;
+  const { favorites } = useFavorites();
   
   const [sessions, setSessions] = useState<StudySession[]>([]);
   const [filteredSessions, setFilteredSessions] = useState<StudySession[]>([]);
@@ -23,20 +26,31 @@ export default function Sessions() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [dateRange, setDateRange] = useState<{ start: string; end: string }>({ start: '', end: '' });
   const [isLoading, setIsLoading] = useState(true);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   useEffect(() => {
-    // データ読み込みをシミュレート
-    setIsLoading(true);
-    setTimeout(() => {
-      setSessions(mockData.studySessions as StudySession[]);
-      setFilteredSessions(mockData.studySessions as StudySession[]);
-      
-      // URLパラメータからカテゴリを設定
-      if (category && typeof category === 'string') {
-        setSelectedCategory(category);
+    // データ読み込み
+    const fetchSessions = async () => {
+      setIsLoading(true);
+      try {
+        const loadedSessions = await loadAllSessions();
+        setSessions(loadedSessions);
+        setFilteredSessions(loadedSessions);
+        
+        // URLパラメータからカテゴリを設定
+        if (category && typeof category === 'string') {
+          setSelectedCategory(category);
+        }
+      } catch (error) {
+        console.error('Failed to load sessions:', error);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
-    }, 800);
+    };
+    
+    fetchSessions();
   }, [category]);
 
   useEffect(() => {
@@ -96,6 +110,11 @@ export default function Sessions() {
       });
     }
 
+    // お気に入りフィルター
+    if (showFavoritesOnly) {
+      filtered = filtered.filter(session => favorites.includes(session.id));
+    }
+
     // ソート
     filtered = [...filtered].sort((a, b) => {
       switch (sortOption) {
@@ -113,7 +132,9 @@ export default function Sessions() {
     });
 
     setFilteredSessions(filtered);
-  }, [sessions, selectedTags, sortOption, searchQuery, selectedCategory, dateRange]);
+    // フィルターが変更されたら最初のページに戻る
+    setCurrentPage(1);
+  }, [sessions, selectedTags, sortOption, searchQuery, selectedCategory, dateRange, showFavoritesOnly, favorites]);
 
   const allTags = Array.from(
     new Set(sessions.flatMap(session => session.tags))
@@ -129,6 +150,19 @@ export default function Sessions() {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
+  };
+
+  // ページネーション計算
+  const totalPages = Math.ceil(filteredSessions.length / itemsPerPage);
+  const paginatedSessions = filteredSessions.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // ページトップにスクロール
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const getTagColor = (tag: string, index: number) => {
@@ -182,7 +216,7 @@ export default function Sessions() {
                   <div className="inline-flex items-center px-4 py-2 bg-dark-700 border border-cyber-500/50 rounded-full">
                     <span className="text-sm font-cyber text-cyber-300 mr-2">FILTERED BY:</span>
                     <span className="text-sm font-cyber text-neon-blue">
-                      {mockData.categories.find(c => c.id === selectedCategory)?.name || selectedCategory}
+                      {getCategories().find(c => c.id === selectedCategory)?.name || selectedCategory}
                     </span>
                     <button
                       onClick={() => {
@@ -206,6 +240,28 @@ export default function Sessions() {
                     <Filter className="h-6 w-6 mr-3" />
                     NEURAL FILTERS
                   </h3>
+
+                  {/* お気に入りフィルター */}
+                  <div className="mb-6">
+                    <button
+                      onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                      className={`w-full p-4 rounded-lg border transition-all duration-300 flex items-center justify-center space-x-2 group
+                                ${showFavoritesOnly 
+                                  ? 'bg-neon-pink/20 border-neon-pink text-neon-pink hover:bg-neon-pink/30' 
+                                  : 'bg-dark-700 dark:bg-dark-700 light:bg-white border-cyber-500/50 dark:border-cyber-500/50 light:border-gray-300 text-cyan-300 dark:text-cyan-300 light:text-gray-700 hover:border-neon-pink dark:hover:border-neon-pink light:hover:border-pink-500'
+                                }`}
+                    >
+                      <Heart className={`h-5 w-5 ${showFavoritesOnly ? 'fill-current' : ''}`} />
+                      <span className="font-cyber tracking-wider">
+                        {showFavoritesOnly ? 'SHOWING FAVORITES' : 'SHOW FAVORITES'}
+                      </span>
+                      {favorites.length > 0 && (
+                        <span className="ml-2 px-2 py-1 bg-dark-800 dark:bg-dark-800 light:bg-gray-100 rounded-full text-xs">
+                          {favorites.length}
+                        </span>
+                      )}
+                    </button>
+                  </div>
 
                   {/* ソート */}
                   <div className="mb-6">
@@ -347,12 +403,19 @@ export default function Sessions() {
                       <SessionSkeleton key={index} />
                     ))}
                   </div>
-                ) : filteredSessions.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {filteredSessions.map((session) => (
-                      <StudySessionCard key={session.id} session={session} />
-                    ))}
-                  </div>
+                ) : paginatedSessions.length > 0 ? (
+                  <>
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                      {paginatedSessions.map((session) => (
+                        <StudySessionCard key={session.id} session={session} />
+                      ))}
+                    </div>
+                    <Pagination 
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={handlePageChange}
+                    />
+                  </>
                 ) : (
                   <div className="text-center py-12">
                     <div className="card-cyber p-12">

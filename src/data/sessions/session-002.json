@@ -1,0 +1,23 @@
+{
+  "id": "2",
+  "title": "生成AI会 Vol.2",
+  "date": "2023-07-20",
+  "presenter": "コミュニティメンバー",
+  "description": "第2回目の生成AI会。前回の反響を受けて継続開催が決定。参加者同士の交流も深まり、活発な質疑応答が行われました。",
+  "tags": [
+    "第2回",
+    "継続開催",
+    "交流",
+    "質疑応答"
+  ],
+  "materials": [
+    {
+      "id": "2-1",
+      "title": "Vol.2 セッション資料",
+      "type": "slide",
+      "url": "/documents/ai-session-vol2.pdf",
+      "description": "第2回生成AI会の発表資料"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

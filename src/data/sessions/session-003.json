@@ -1,0 +1,23 @@
+{
+  "id": "3",
+  "title": "生成AI会 Vol.3",
+  "date": "2023-08-03",
+  "presenter": "コミュニティメンバー",
+  "description": "第3回目の生成AI会。参加者も増え、より深い技術的な議論が展開されました。コミュニティとしての基盤が固まってきた重要な回です。",
+  "tags": [
+    "第3回",
+    "技術議論",
+    "コミュニティ",
+    "基盤固め"
+  ],
+  "materials": [
+    {
+      "id": "3-1",
+      "title": "Vol.3 セッション資料",
+      "type": "slide",
+      "url": "/documents/ai-session-vol3.pdf",
+      "description": "第3回生成AI会の発表資料"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

@@ -5,13 +5,15 @@ import { useRouter } from 'next/router';
 import { Calendar, User, FileText, Play, Download, ExternalLink, ArrowLeft } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { StudySession } from '@/types';
-import mockData from '@/data/mockData.json';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import sessionIndex from '@/data/sessions/index.json';
 
 interface SessionDetailProps {
   session: StudySession | null;
+  relatedSessions?: StudySession[];
 }
 
-export default function SessionDetail({ session }: SessionDetailProps) {
+export default function SessionDetail({ session, relatedSessions = [] }: SessionDetailProps) {
   const router = useRouter();
 
   if (!session) {
@@ -243,13 +245,7 @@ export default function SessionDetail({ session }: SessionDetailProps) {
                   関連する勉強会
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {mockData.studySessions
-                    .filter(s => 
-                      s.id !== session.id && 
-                      s.tags.some(tag => session.tags.includes(tag))
-                    )
-                    .slice(0, 2)
-                    .map((relatedSession) => (
+                  {relatedSessions.map((relatedSession) => (
                       <Link
                         key={relatedSession.id}
                         href={`/sessions/${relatedSession.id}`}
@@ -284,20 +280,52 @@ export default function SessionDetail({ session }: SessionDetailProps) {
   );
 }
 
-export async function getStaticPaths() {
-  const paths = (mockData.studySessions as StudySession[]).map((session) => ({
-    params: { id: session.id },
-  }));
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = sessionIndex.map(filename => {
+    const id = filename.match(/session-(\d+)\.json/)?.[1];
+    return id ? { params: { id } } : null;
+  }).filter(Boolean) as { params: { id: string } }[];
 
   return { paths, fallback: false };
-}
+};
 
-export async function getStaticProps({ params }: { params: { id: string } }) {
-  const session = (mockData.studySessions as StudySession[]).find(s => s.id === params.id) || null;
-
-  return {
-    props: {
-      session,
-    },
-  };
-}
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params?.id as string;
+  const paddedId = id.padStart(3, '0');
+  const filename = `session-${paddedId}.json`;
+  
+  try {
+    const sessionData = await import(`@/data/sessions/${filename}`);
+    const session = sessionData.default;
+    
+    // Load all sessions for related sessions
+    const allSessionsData = await Promise.all(
+      sessionIndex.map(async (fname) => {
+        const data = await import(`@/data/sessions/${fname}`);
+        return data.default;
+      })
+    );
+    
+    // Find related sessions
+    const relatedSessions = allSessionsData
+      .filter((s: StudySession) => 
+        s.id !== session.id && 
+        s.tags.some((tag: string) => session.tags.includes(tag))
+      )
+      .slice(0, 2);
+    
+    return {
+      props: {
+        session,
+        relatedSessions
+      }
+    };
+  } catch (error) {
+    return {
+      props: {
+        session: null,
+        relatedSessions: []
+      }
+    };
+  }
+};

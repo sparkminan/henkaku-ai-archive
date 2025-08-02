@@ -4,10 +4,25 @@ import Link from 'next/link';
 import { Grid, Cpu, Code, Palette, Briefcase, Brain, Users, ArrowRight, Activity } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Category } from '@/types';
-import mockData from '@/data/mockData.json';
+import { loadAllSessions, getCategories } from '@/utils/dataLoader';
+import { StudySession } from '@/types';
 
 export default function Categories() {
-  const categories = mockData.categories;
+  const [sessions, setSessions] = React.useState<StudySession[]>([]);
+  const categories = getCategories();
+  
+  React.useEffect(() => {
+    const fetchSessions = async () => {
+      try {
+        const loadedSessions = await loadAllSessions();
+        setSessions(loadedSessions);
+      } catch (error) {
+        console.error('Failed to load sessions:', error);
+      }
+    };
+    
+    fetchSessions();
+  }, []);
 
   const getSessionCountByCategory = (categoryId: string) => {
     // カテゴリに対応するタグを持つセッションをカウント
@@ -22,7 +37,7 @@ export default function Categories() {
     };
 
     const relevantTags = categoryTagMap[categoryId] || [];
-    return (mockData.studySessions as any[]).filter(session =>
+    return sessions.filter(session =>
       session.tags.some((tag: string) => relevantTags.some(relevantTag => tag.includes(relevantTag)))
     ).length;
   };

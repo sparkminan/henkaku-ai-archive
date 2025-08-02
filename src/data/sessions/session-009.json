@@ -1,0 +1,30 @@
+{
+  "id": "9",
+  "title": "複数AIベンチ",
+  "date": "2023-10-26",
+  "presenter": "コミュニティメンバー",
+  "description": "複数の生成AIモデルを同じタスクで比較テストするベンチマーク企画の第2回。前回の結果を踏まえ、さらに詳細な性能比較を実施します。",
+  "tags": [
+    "ベンチマーク",
+    "性能比較",
+    "モデル評価",
+    "テスト"
+  ],
+  "materials": [
+    {
+      "id": "9-1",
+      "title": "複数AIベンチマーク結果2",
+      "type": "slide",
+      "url": "/documents/multi-ai-benchmark-2.pdf",
+      "description": "第2回AIベンチマークテストの結果"
+    },
+    {
+      "id": "9-2",
+      "title": "テストデータセット",
+      "type": "document",
+      "url": "/documents/benchmark-dataset-2.json",
+      "description": "ベンチマークで使用したテストデータ"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

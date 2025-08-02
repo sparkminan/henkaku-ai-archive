@@ -1,0 +1,30 @@
+{
+  "id": "20",
+  "title": "Bolt.new＋Figmaはイケるのか",
+  "date": "2024-03-29",
+  "presenter": "コミュニティメンバー",
+  "description": "AI支援開発ツールBolt.newとデザインツールFigmaの連携可能性を探ります。デザインからコードへの自動変換、プロトタイプの高速化など、実用性を検証します。",
+  "tags": [
+    "Bolt.new",
+    "Figma",
+    "デザイン",
+    "プロトタイピング"
+  ],
+  "materials": [
+    {
+      "id": "20-1",
+      "title": "Bolt.new×Figma実験レポート",
+      "type": "slide",
+      "url": "/documents/bolt-figma-experiment.pdf",
+      "description": "デザインツールとAI開発ツールの連携実験"
+    },
+    {
+      "id": "20-2",
+      "title": "サンプルプロジェクト",
+      "type": "code",
+      "url": "/documents/bolt-figma-sample.zip",
+      "description": "Bolt.newとFigmaで作成したサンプルアプリ"
+    }
+  ],
+  "thumbnailUrl": "/images/bolt-figma-thumbnail.svg"
+}

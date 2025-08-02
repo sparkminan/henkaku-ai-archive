@@ -1,0 +1,23 @@
+{
+  "id": "22",
+  "title": "AIのトレンドを語る (4/26)",
+  "date": "2024-04-26",
+  "presenter": "コミュニティメンバー",
+  "description": "2024年前半のAI業界のトレンドを振り返り、今後の展望について議論します。新しいモデルの登場、企業の動向、技術的ブレイクスルーなどを総合的に分析します。",
+  "tags": [
+    "AIトレンド",
+    "業界動向",
+    "展望",
+    "ディスカッション"
+  ],
+  "materials": [
+    {
+      "id": "22-1",
+      "title": "2024年AI業界動向レポート",
+      "type": "document",
+      "url": "/documents/ai-trends-2024-april.pdf",
+      "description": "2024年前半のAI業界の主要な動きまとめ"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-trends-thumbnail.svg"
+}

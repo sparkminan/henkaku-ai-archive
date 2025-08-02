@@ -1,0 +1,30 @@
+{
+  "id": "16",
+  "title": "無料生成AI使って爆速でNFTを作る",
+  "date": "2024-01-18",
+  "presenter": "コミュニティメンバー",
+  "description": "無料で利用できる生成AIツールを駆使して、短時間でNFTアートを制作する実践ワークショップ。アイデア出しから画像生成、NFT化まで一連の流れを体験します。",
+  "tags": [
+    "NFT",
+    "画像生成",
+    "無料ツール",
+    "アート制作"
+  ],
+  "materials": [
+    {
+      "id": "16-1",
+      "title": "NFT制作フローガイド",
+      "type": "slide",
+      "url": "/documents/nft-creation-flow.pdf",
+      "description": "生成AIを使ったNFT制作の完全ガイド"
+    },
+    {
+      "id": "16-2",
+      "title": "無料AIツール一覧",
+      "type": "document",
+      "url": "/documents/free-ai-tools-list.md",
+      "description": "NFT制作に使える無料AIツールまとめ"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

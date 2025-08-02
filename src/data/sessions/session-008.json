@@ -1,0 +1,30 @@
+{
+  "id": "8",
+  "title": "複数AIベンチ",
+  "date": "2023-10-12",
+  "presenter": "コミュニティメンバー",
+  "description": "様々な生成AIモデルを同一条件下でテストし、それぞれの特徴や得意分野を比較分析。ChatGPT、Claude、Bard等の性能を客観的に評価します。",
+  "tags": [
+    "ベンチマーク",
+    "性能比較",
+    "モデル評価",
+    "分析"
+  ],
+  "materials": [
+    {
+      "id": "8-1",
+      "title": "複数AIベンチマーク結果",
+      "type": "slide",
+      "url": "/documents/multi-ai-benchmark.pdf",
+      "description": "主要AIモデルの性能比較結果"
+    },
+    {
+      "id": "8-2",
+      "title": "テスト方法論",
+      "type": "document",
+      "url": "/documents/benchmark-methodology.md",
+      "description": "ベンチマークテストの実施方法"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

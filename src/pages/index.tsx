@@ -5,19 +5,29 @@ import { Calendar, Users, BookOpen, TrendingUp, Brain, Zap, CircuitBoard, Cpu } 
 import Layout from '@/components/Layout';
 import StudySessionCard from '@/components/StudySessionCard';
 import { StudySession } from '@/types';
-import mockData from '@/data/mockData.json';
+import { loadAllSessions, getCategories } from '@/utils/dataLoader';
 import { getImagePath } from '@/utils/config';
 
 export default function Home() {
   const [recentSessions, setRecentSessions] = useState<StudySession[]>([]);
   const [searchResults, setSearchResults] = useState<StudySession[] | null>(null);
 
+  const [allSessions, setAllSessions] = useState<StudySession[]>([]);
+
   useEffect(() => {
-    // 最新の4件を取得
-    const sessions = (mockData.studySessions as StudySession[])
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 4);
-    setRecentSessions(sessions);
+    // セッションデータを読み込み
+    const fetchSessions = async () => {
+      try {
+        const sessions = await loadAllSessions();
+        setAllSessions(sessions);
+        // 最新の4件を取得
+        setRecentSessions(sessions.slice(0, 4));
+      } catch (error) {
+        console.error('Failed to load sessions:', error);
+      }
+    };
+    
+    fetchSessions();
   }, []);
 
   const handleSearch = (query: string) => {
@@ -26,7 +36,7 @@ export default function Home() {
       return;
     }
 
-    const results = (mockData.studySessions as StudySession[]).filter(session =>
+    const results = allSessions.filter(session =>
       session.title.toLowerCase().includes(query.toLowerCase()) ||
       session.description.toLowerCase().includes(query.toLowerCase()) ||
       session.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase())) ||
@@ -125,7 +135,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="text-4xl font-cyber font-bold text-neon-blue mb-2">
-                      {mockData.studySessions.length}
+                      {allSessions.length}
                     </div>
                     <div className="text-cyber-300 font-cyber tracking-wider">SESSIONS</div>
                   </div>
@@ -137,7 +147,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="text-4xl font-cyber font-bold text-neon-purple mb-2">
-                      {mockData.studySessions.reduce((total, session) => total + session.materials.length, 0)}
+                      {allSessions.reduce((total, session) => total + session.materials.length, 0)}
                     </div>
                     <div className="text-cyber-300 font-cyber tracking-wider">MATERIALS</div>
                   </div>
@@ -149,7 +159,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="text-4xl font-cyber font-bold text-neon-pink mb-2">
-                      {new Set(mockData.studySessions.map(s => s.presenter)).size}
+                      {new Set(allSessions.map(s => s.presenter)).size}
                     </div>
                     <div className="text-cyber-300 font-cyber tracking-wider">SPEAKERS</div>
                   </div>
@@ -161,7 +171,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="text-4xl font-cyber font-bold text-neon-green mb-2">
-                      {mockData.categories.length}
+                      {getCategories().length}
                     </div>
                     <div className="text-cyber-300 font-cyber tracking-wider">CATEGORIES</div>
                   </div>
@@ -227,7 +237,7 @@ export default function Home() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {mockData.categories.map((category, index) => (
+                  {getCategories().map((category, index) => (
                     <Link
                       key={category.id}
                       href={`/categories/${category.id}`}

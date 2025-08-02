@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import KeyboardHelp from './KeyboardHelp';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,6 +10,8 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, onSearch }) => {
+  useKeyboardShortcuts();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header onSearch={onSearch} />
@@ -15,6 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onSearch }) => {
         {children}
       </main>
       <Footer />
+      <KeyboardHelp />
     </div>
   );
 };

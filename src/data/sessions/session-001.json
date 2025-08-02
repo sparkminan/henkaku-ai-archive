@@ -1,0 +1,23 @@
+{
+  "id": "1",
+  "title": "生成AI会 Vol.1",
+  "date": "2023-07-06",
+  "presenter": "コミュニティメンバー",
+  "description": "記念すべき第1回目の生成AI会。HENKAKUコミュニティで生成AI技術について語り合う場として始まりました。この回から現在まで続く貴重な学びの場がスタートしました。",
+  "tags": [
+    "第1回",
+    "記念すべき",
+    "スタート",
+    "創設"
+  ],
+  "materials": [
+    {
+      "id": "1-1",
+      "title": "Vol.1 セッション資料",
+      "type": "slide",
+      "url": "/documents/ai-session-vol1.pdf",
+      "description": "記念すべき第1回生成AI会の発表資料"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

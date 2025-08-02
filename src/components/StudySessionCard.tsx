@@ -1,14 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
-import { Calendar, User, FileText, Play, ExternalLink, Zap } from 'lucide-react';
+import { Calendar, User, FileText, Play, ExternalLink, Zap, Heart } from 'lucide-react';
 import { StudySession } from '@/types';
 import { getImagePath } from '@/utils/config';
+import { useFavorites } from '@/contexts/FavoritesContext';
 
 interface StudySessionCardProps {
   session: StudySession;
 }
 
 const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const favorite = isFavorite(session.id);
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('ja-JP', {
@@ -16,6 +20,12 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
       month: 'long',
       day: 'numeric',
     });
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFavorite(session.id);
   };
 
   const getTagColor = (tag: string, index: number) => {
@@ -50,6 +60,22 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           {/* グロー効果 */}
           <div className="absolute inset-0 bg-neon-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          {/* お気に入りボタン */}
+          <button
+            onClick={handleFavoriteClick}
+            className="absolute top-2 right-2 p-2 rounded-full bg-dark-800/80 dark:bg-dark-800/80 light:bg-white/80 
+                     backdrop-blur-sm border border-cyber-500/30 dark:border-cyber-500/30 light:border-gray-300
+                     hover:scale-110 transition-all duration-300 group/favorite"
+          >
+            <Heart 
+              className={`h-5 w-5 transition-all duration-300 ${
+                favorite 
+                  ? 'fill-neon-pink text-neon-pink' 
+                  : 'text-cyber-400 dark:text-cyber-400 light:text-gray-500 group-hover/favorite:text-neon-pink dark:group-hover/favorite:text-neon-pink light:group-hover/favorite:text-pink-500'
+              }`} 
+            />
+          </button>
         </div>
       )}
 

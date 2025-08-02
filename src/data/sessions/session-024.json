@@ -1,0 +1,30 @@
+{
+  "id": "24",
+  "title": "音声AI を試す？",
+  "date": "2024-06-01",
+  "presenter": "コミュニティメンバー",
+  "description": "最新の音声AI技術を実際に試してみる実践セッション。音声合成、音声認識、リアルタイム音声変換などの技術を体験し、その可能性と課題を探ります。",
+  "tags": [
+    "音声AI",
+    "音声合成",
+    "音声認識",
+    "実践"
+  ],
+  "materials": [
+    {
+      "id": "24-1",
+      "title": "音声AI技術の現状",
+      "type": "slide",
+      "url": "/documents/voice-ai-overview.pdf",
+      "description": "最新の音声AI技術とその応用例"
+    },
+    {
+      "id": "24-2",
+      "title": "音声AI実践コード",
+      "type": "code",
+      "url": "/documents/voice-ai-examples.py",
+      "description": "音声AIを試すためのサンプルコード"
+    }
+  ],
+  "thumbnailUrl": "/images/voice-ai-thumbnail.svg"
+}

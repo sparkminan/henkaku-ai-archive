@@ -1,0 +1,23 @@
+{
+  "id": "27",
+  "title": "久々の肩慣らし：もしくろ - もしも適当なsparkがclaude codeをはじめて触ったらｗ",
+  "date": "2024-07-15",
+  "presenter": "spark",
+  "description": "Claude Codeを初めて使ってみる体験記。実際の開発フローや使い勝手、つまづきポイントなどを率直にレポートします。AI支援開発ツールの実用性について考察します。",
+  "tags": [
+    "Claude Code",
+    "AI開発",
+    "実体験",
+    "ツール紹介"
+  ],
+  "materials": [
+    {
+      "id": "27-1",
+      "title": "Claude Code初体験レポート",
+      "type": "slide",
+      "url": "/documents/claude-code-first-try.pdf",
+      "description": "Claude Codeを初めて使った感想と学び"
+    }
+  ],
+  "thumbnailUrl": "/images/claude-code-thumbnail.svg"
+}

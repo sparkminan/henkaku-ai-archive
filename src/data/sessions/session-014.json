@@ -1,0 +1,30 @@
+{
+  "id": "14",
+  "title": "生成AIと来年の目標を語る",
+  "date": "2023-12-30",
+  "presenter": "コミュニティメンバー",
+  "description": "2023年の締めくくりとして、この一年の生成AI技術の進歩を振り返り、2024年への展望と個人的な目標を語り合う年末特別セッション。",
+  "tags": [
+    "年末振り返り",
+    "2024年展望",
+    "目標設定",
+    "総括"
+  ],
+  "materials": [
+    {
+      "id": "14-1",
+      "title": "2023年AI技術総括",
+      "type": "slide",
+      "url": "/documents/ai-2023-summary.pdf",
+      "description": "2023年の生成AI技術の主要な進歩まとめ"
+    },
+    {
+      "id": "14-2",
+      "title": "2024年AI予測レポート",
+      "type": "document",
+      "url": "/documents/ai-2024-predictions.md",
+      "description": "来年のAI技術動向予測"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

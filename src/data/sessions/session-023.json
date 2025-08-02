@@ -1,0 +1,30 @@
+{
+  "id": "23",
+  "title": "Airtableの基礎！",
+  "date": "2024-05-15",
+  "presenter": "コミュニティメンバー",
+  "description": "ノーコードデータベースツールAirtableの基本的な使い方から応用まで。AI時代におけるデータ管理の効率化手法として、Airtableの活用方法を学びます。",
+  "tags": [
+    "Airtable",
+    "ノーコード",
+    "データベース",
+    "基礎"
+  ],
+  "materials": [
+    {
+      "id": "23-1",
+      "title": "Airtable入門ガイド",
+      "type": "slide",
+      "url": "/documents/airtable-basics.pdf",
+      "description": "Airtableの基本機能と活用事例"
+    },
+    {
+      "id": "23-2",
+      "title": "Airtableテンプレート集",
+      "type": "document",
+      "url": "/documents/airtable-templates.md",
+      "description": "すぐに使えるAirtableテンプレート"
+    }
+  ],
+  "thumbnailUrl": "/images/airtable-thumbnail.svg"
+}

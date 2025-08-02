@@ -1,0 +1,23 @@
+{
+  "id": "4",
+  "title": "生成AI会 Vol.4",
+  "date": "2023-08-17",
+  "presenter": "コミュニティメンバー",
+  "description": "第4回目の生成AI会。夏真っ盛りの時期に開催され、実践的なAI活用事例や新しいツールの紹介が行われました。",
+  "tags": [
+    "第4回",
+    "実践事例",
+    "ツール紹介",
+    "活用法"
+  ],
+  "materials": [
+    {
+      "id": "4-1",
+      "title": "Vol.4 セッション資料",
+      "type": "slide",
+      "url": "/documents/ai-session-vol4.pdf",
+      "description": "第4回生成AI会の発表資料"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

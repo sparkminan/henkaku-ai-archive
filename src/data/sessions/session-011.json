@@ -1,0 +1,30 @@
+{
+  "id": "11",
+  "title": "便利な使い方",
+  "date": "2023-11-23",
+  "presenter": "コミュニティメンバー",
+  "description": "日常業務や創作活動で実際に役立つ生成AIの使い方を紹介。効率化のコツ、時短テクニック、創造性を高める活用法など、実用的なノウハウを共有します。",
+  "tags": [
+    "実用的活用",
+    "効率化",
+    "時短",
+    "日常業務"
+  ],
+  "materials": [
+    {
+      "id": "11-1",
+      "title": "実用AI活用集",
+      "type": "slide",
+      "url": "/documents/practical-ai-usage.pdf",
+      "description": "日常で使える生成AIの便利な使い方"
+    },
+    {
+      "id": "11-2",
+      "title": "効率化プロンプト集",
+      "type": "document",
+      "url": "/documents/efficiency-prompts.md",
+      "description": "業務効率化のためのプロンプト例"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

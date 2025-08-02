@@ -1,0 +1,30 @@
+{
+  "id": "7",
+  "title": "新ツール座談会",
+  "date": "2023-09-28",
+  "presenter": "コミュニティメンバー",
+  "description": "最近登場した生成AI関連の新しいツールについて情報交換する座談会。実際に使ってみた感想、使い所、課題などを共有し合います。",
+  "tags": [
+    "新ツール",
+    "情報交換",
+    "座談会",
+    "ツールレビュー"
+  ],
+  "materials": [
+    {
+      "id": "7-1",
+      "title": "新ツール紹介資料",
+      "type": "slide",
+      "url": "/documents/new-tools-overview.pdf",
+      "description": "注目の新しいAIツール紹介"
+    },
+    {
+      "id": "7-2",
+      "title": "ツール評価シート",
+      "type": "document",
+      "url": "/documents/tool-evaluation-sheet.md",
+      "description": "AIツールの評価基準とレビュー"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

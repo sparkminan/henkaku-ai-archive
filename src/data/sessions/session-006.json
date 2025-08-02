@@ -1,0 +1,38 @@
+{
+  "id": "6",
+  "title": "SunoAIで音楽作成",
+  "date": "2023-09-15",
+  "presenter": "コミュニティメンバー",
+  "description": "AI音楽生成サービスSunoAIを使った楽曲制作ワークショップ。プロンプトの書き方から実際の楽曲生成まで、AIによる音楽創作の可能性を探ります。",
+  "tags": [
+    "SunoAI",
+    "音楽生成",
+    "創作",
+    "ワークショップ"
+  ],
+  "materials": [
+    {
+      "id": "6-1",
+      "title": "SunoAI活用ガイド",
+      "type": "slide",
+      "url": "/documents/sunoai-guide.pdf",
+      "description": "SunoAIを使った音楽制作の手法"
+    },
+    {
+      "id": "6-2",
+      "title": "音楽プロンプト例集",
+      "type": "document",
+      "url": "/documents/music-prompts.md",
+      "description": "効果的な音楽生成プロンプトの例"
+    },
+    {
+      "id": "6-3",
+      "title": "制作楽曲サンプル",
+      "type": "other",
+      "url": "/documents/sunoai-samples.zip",
+      "description": "セッション中に作成した楽曲サンプル"
+    }
+  ],
+  "videoUrl": "https://example.com/video/sunoai-workshop",
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

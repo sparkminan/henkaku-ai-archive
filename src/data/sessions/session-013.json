@@ -1,0 +1,23 @@
+{
+  "id": "13",
+  "title": "生成AIと雑談",
+  "date": "2023-12-21",
+  "presenter": "コミュニティメンバー",
+  "description": "特定のテーマにとらわれず、生成AIについて自由に語り合うカジュアルセッション。最近試したツール、面白い発見、課題など、ざっくばらんに情報交換します。",
+  "tags": [
+    "雑談",
+    "情報交換",
+    "カジュアル",
+    "ディスカッション"
+  ],
+  "materials": [
+    {
+      "id": "13-1",
+      "title": "雑談まとめ",
+      "type": "document",
+      "url": "/documents/casual-discussion-notes.md",
+      "description": "セッション中に出た話題と発見のまとめ"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

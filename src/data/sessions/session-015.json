@@ -1,0 +1,30 @@
+{
+  "id": "15",
+  "title": "生成AIと一緒に今年の目標を共有する",
+  "date": "2024-01-05",
+  "presenter": "コミュニティメンバー",
+  "description": "新年恒例の目標設定セッション。生成AIを活用した目標設定方法、進捗管理、モチベーション維持の手法を共有。参加者同士で2024年の抱負を語り合います。",
+  "tags": [
+    "目標設定",
+    "新年",
+    "モチベーション",
+    "コミュニティ"
+  ],
+  "materials": [
+    {
+      "id": "15-1",
+      "title": "AI活用目標設定法",
+      "type": "slide",
+      "url": "/documents/ai-goal-setting.pdf",
+      "description": "生成AIを使った効果的な目標設定手法"
+    },
+    {
+      "id": "15-2",
+      "title": "目標管理テンプレート",
+      "type": "document",
+      "url": "/documents/goal-tracking-template.md",
+      "description": "目標の進捗管理用テンプレート"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

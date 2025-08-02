@@ -1,0 +1,23 @@
+{
+  "id": "26",
+  "title": "AIの目的は何？",
+  "date": "2024-07-01",
+  "presenter": "コミュニティメンバー",
+  "description": "AI技術の発展における根本的な目的について議論します。技術的進歩だけでなく、人間社会にとってAIがどうあるべきかを哲学的・実践的な観点から考察します。",
+  "tags": [
+    "AI哲学",
+    "目的論",
+    "社会的意義",
+    "ディスカッション"
+  ],
+  "materials": [
+    {
+      "id": "26-1",
+      "title": "AIの目的に関する考察",
+      "type": "document",
+      "url": "/documents/ai-purpose-discussion.md",
+      "description": "AIの存在意義と社会的役割についての議論まとめ"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-purpose-thumbnail.svg"
+}

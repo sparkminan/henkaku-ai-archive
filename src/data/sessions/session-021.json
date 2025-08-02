@@ -1,0 +1,23 @@
+{
+  "id": "21",
+  "title": "AIのトレンドを語る (4/12)",
+  "date": "2024-04-12",
+  "presenter": "コミュニティメンバー",
+  "description": "最新のAI技術トレンドについての座談会。マルチモーダルAI、エージェント技術、オープンソースモデルの進展などについて活発に議論しました。",
+  "tags": [
+    "AIトレンド",
+    "マルチモーダル",
+    "エージェント",
+    "オープンソース"
+  ],
+  "materials": [
+    {
+      "id": "21-1",
+      "title": "最新AIトレンド分析",
+      "type": "slide",
+      "url": "/documents/latest-ai-trends.pdf",
+      "description": "2024年春のAI技術動向と注目ポイント"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-trends-thumbnail.svg"
+}

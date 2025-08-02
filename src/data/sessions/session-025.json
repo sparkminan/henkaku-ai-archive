@@ -1,0 +1,30 @@
+{
+  "id": "25",
+  "title": "Cursor+Obsidian / AIと倫理",
+  "date": "2024-06-15",
+  "presenter": "コミュニティメンバー",
+  "description": "AI支援エディタCursorとナレッジ管理ツールObsidianの組み合わせによる効率的な知識管理手法を紹介。加えて、AI技術における倫理的課題についても議論します。",
+  "tags": [
+    "Cursor",
+    "Obsidian",
+    "ナレッジ管理",
+    "AI倫理"
+  ],
+  "materials": [
+    {
+      "id": "25-1",
+      "title": "Cursor+Obsidian活用法",
+      "type": "slide",
+      "url": "/documents/cursor-obsidian-guide.pdf",
+      "description": "効率的な知識管理とコーディングワークフロー"
+    },
+    {
+      "id": "25-2",
+      "title": "AI倫理に関する考察",
+      "type": "document",
+      "url": "/documents/ai-ethics-discussion.md",
+      "description": "AI技術の倫理的課題と対応策について"
+    }
+  ],
+  "thumbnailUrl": "/images/cursor-obsidian-thumbnail.svg"
+}

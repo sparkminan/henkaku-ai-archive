@@ -1,0 +1,30 @@
+{
+  "id": "12",
+  "title": "生成AIと権利、パーソナライズ",
+  "date": "2023-12-07",
+  "presenter": "コミュニティメンバー",
+  "description": "生成AI技術における知的財産権の問題と、パーソナライズされたAIサービスの可能性について議論。法的課題から技術的実装まで幅広く扱います。",
+  "tags": [
+    "知的財産権",
+    "パーソナライズ",
+    "法的課題",
+    "プライバシー"
+  ],
+  "materials": [
+    {
+      "id": "12-1",
+      "title": "AI権利問題の現状",
+      "type": "slide",
+      "url": "/documents/ai-rights-issues.pdf",
+      "description": "生成AIと知的財産権に関する課題整理"
+    },
+    {
+      "id": "12-2",
+      "title": "パーソナライズ技術概要",
+      "type": "document",
+      "url": "/documents/personalization-tech.md",
+      "description": "AIパーソナライゼーションの技術的アプローチ"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

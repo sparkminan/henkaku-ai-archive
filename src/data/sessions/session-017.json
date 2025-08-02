@@ -1,0 +1,30 @@
+{
+  "id": "17",
+  "title": "ハルシネーションとの付き合い方",
+  "date": "2024-02-01",
+  "presenter": "コミュニティメンバー",
+  "description": "AI の「ハルシネーション」（虚偽情報の生成）について深く理解し、実用的な対策方法を学びます。検証手法、プロンプト設計、システム設計での対応策を具体的に解説します。",
+  "tags": [
+    "ハルシネーション",
+    "AI精度",
+    "検証手法",
+    "プロンプト設計"
+  ],
+  "materials": [
+    {
+      "id": "17-1",
+      "title": "ハルシネーション対策ガイド",
+      "type": "slide",
+      "url": "/documents/hallucination-countermeasures.pdf",
+      "description": "AIの虚偽情報生成への実践的対応方法"
+    },
+    {
+      "id": "17-2",
+      "title": "検証用プロンプト集",
+      "type": "document",
+      "url": "/documents/verification-prompts.md",
+      "description": "AI出力の精度向上のためのプロンプト例"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

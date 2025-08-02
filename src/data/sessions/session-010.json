@@ -1,0 +1,30 @@
+{
+  "id": "10",
+  "title": "AIと倫理・リスクをAIと議論する",
+  "date": "2023-11-09",
+  "presenter": "コミュニティメンバー",
+  "description": "AI技術の倫理的課題やリスクについて、AIツール自体を使って議論する実験的セッション。メタ的な視点でAIの危険性と可能性を探ります。",
+  "tags": [
+    "AI倫理",
+    "リスク分析",
+    "メタ議論",
+    "哲学的考察"
+  ],
+  "materials": [
+    {
+      "id": "10-1",
+      "title": "AIとの倫理議論記録",
+      "type": "document",
+      "url": "/documents/ai-ethics-dialogue.md",
+      "description": "AIと行った倫理議論の記録と分析"
+    },
+    {
+      "id": "10-2",
+      "title": "AIリスク評価フレームワーク",
+      "type": "slide",
+      "url": "/documents/ai-risk-framework.pdf",
+      "description": "AI技術のリスク評価手法"
+    }
+  ],
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

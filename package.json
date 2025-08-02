@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "add-session": "node scripts/add-session.js",
+    "split-sessions": "node scripts/split-sessions.js"
   },
   "dependencies": {
     "next": "^14.0.0",

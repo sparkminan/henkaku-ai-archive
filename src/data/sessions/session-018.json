@@ -1,0 +1,31 @@
+{
+  "id": "18",
+  "title": "Operatorを試す＆ツールで即席開発！",
+  "date": "2024-03-01",
+  "presenter": "コミュニティメンバー",
+  "description": "AI Operatorツールの実践的な使用方法と、各種AIツールを組み合わせた高速開発手法を紹介。実際にリアルタイムでアプリケーションを構築するライブコーディングセッション。",
+  "tags": [
+    "Operator",
+    "即席開発",
+    "AIツール",
+    "ライブコーディング"
+  ],
+  "materials": [
+    {
+      "id": "18-1",
+      "title": "Operator活用ガイド",
+      "type": "slide",
+      "url": "/documents/operator-guide.pdf",
+      "description": "AI Operatorの効果的な使い方"
+    },
+    {
+      "id": "18-2",
+      "title": "即席開発ツールキット",
+      "type": "code",
+      "url": "/documents/rapid-dev-toolkit.zip",
+      "description": "高速開発のためのツールとテンプレート"
+    }
+  ],
+  "videoUrl": "https://example.com/video/operator-rapid-dev",
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "fundamentals",
+    "name": "基礎知識",
+    "description": "生成AIの基本的な概念や使い方",
+    "color": "blue"
+  },
+  {
+    "id": "tools",
+    "name": "ツール・サービス",
+    "description": "具体的なAIツールやサービスの紹介・活用法",
+    "color": "purple"
+  },
+  {
+    "id": "development",
+    "name": "開発・実装",
+    "description": "生成AIを使ったシステム開発やプログラミング",
+    "color": "green"
+  },
+  {
+    "id": "creative",
+    "name": "クリエイティブ",
+    "description": "音楽、画像、NFTなどクリエイティブ分野での活用",
+    "color": "orange"
+  },
+  {
+    "id": "business",
+    "name": "ビジネス・実用",
+    "description": "企業での活用や日常業務の効率化",
+    "color": "red"
+  },
+  {
+    "id": "ethics",
+    "name": "倫理・社会的課題",
+    "description": "AI技術の倫理的課題や社会への影響",
+    "color": "indigo"
+  },
+  {
+    "id": "community",
+    "name": "コミュニティ",
+    "description": "勉強会の振り返りや目標設定、交流",
+    "color": "pink"
+  }
+]

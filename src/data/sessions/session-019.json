@@ -1,0 +1,31 @@
+{
+  "id": "19",
+  "title": "続：Manus/Difyで即席開発！by minta",
+  "date": "2024-03-15",
+  "presenter": "minta",
+  "description": "前回に続き、ManusとDifyを使った高速アプリケーション開発の実践編。より複雑なワークフローの構築と実際のビジネス課題への適用例を紹介します。",
+  "tags": [
+    "Manus",
+    "Dify",
+    "即席開発",
+    "ワークフロー"
+  ],
+  "materials": [
+    {
+      "id": "19-1",
+      "title": "Manus/Dify応用編",
+      "type": "slide",
+      "url": "/documents/manus-dify-advanced.pdf",
+      "description": "複雑なワークフローの構築と実用例"
+    },
+    {
+      "id": "19-2",
+      "title": "実用ワークフロー集",
+      "type": "document",
+      "url": "/documents/practical-workflows.json",
+      "description": "ビジネスで使えるワークフローテンプレート"
+    }
+  ],
+  "videoUrl": "https://example.com/video/manus-dify-advanced",
+  "thumbnailUrl": "/images/ai-session-generic.svg"
+}
