@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Calendar, User, FileText, Play, Download, ExternalLink, ArrowLeft } from 'lucide-react';
+import { Calendar, User, FileText, Play, Download, ExternalLink, ArrowLeft, Headphones } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { StudySession } from '@/types';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -177,6 +177,37 @@ export default function SessionDetail({ session, relatedSessions = [] }: Session
                         className="btn-primary flex items-center"
                       >
                         動画を見る
+                        <ExternalLink className="h-4 w-4 ml-2" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ポッドキャスト */}
+              {session.podcastUrl && (
+                <div className="mb-8">
+                  <h2 className="text-xl font-cyber font-semibold text-neon-purple mb-4">
+                    AIサマリー・ポッドキャスト
+                  </h2>
+                  <div className="card p-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <Headphones className="h-6 w-6 text-primary-600 mr-3" />
+                        <div>
+                          <span className="text-gray-700 font-medium">NotebookLM生成ポッドキャスト</span>
+                          <p className="text-sm text-gray-600 mt-1">
+                            AIが生成したセッションサマリーの音声コンテンツ
+                          </p>
+                        </div>
+                      </div>
+                      <a
+                        href={session.podcastUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary flex items-center"
+                      >
+                        聴く
                         <ExternalLink className="h-4 w-4 ml-2" />
                       </a>
                     </div>

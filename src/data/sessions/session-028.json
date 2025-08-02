@@ -1,18 +1,47 @@
 {
   "id": "28",
-  "title": "生成AI会 - Web3とAIの交差点における探求",
+  "title": "第28回 生成AI会 - AI利用実態とWeb3との融合の可能性",
   "date": "2025-08-02",
   "presenter": "コミュニティメンバー",
-  "description": "生成AIとWeb3テクノロジーの接点、コミュニティの現状、および将来の可能性について深く議論。Web3への慎重な姿勢を保ちながらも、AIを主軸に置いたアプローチを探求し、技術コミュニティの未来に向けた前向きで革新的な方向性を示しました。",
-  "tags": ["Web3", "AI融合", "コミュニティ", "技術展望", "ディスカッション"],
+  "description": "世代別AI利用動向の分析から始まり、生成AI利用における倫理的課題、MINTAのリアルタイム翻訳アプリOSS化プロジェクト、AWS Kiroを活用した仕様書駆動開発、そしてWeb3とAIの融合による新たなビジネスモデルの可能性について深く議論。特にトークンエコノミーとAIエージェントの組み合わせが生み出す革新的な価値創造モデルに注目が集まりました。",
+  "tags": ["Web3", "AI融合", "トークンエコノミー", "OSS", "MINTA", "AWS Kiro", "倫理", "世代別分析", "仕様書駆動開発"],
   "materials": [
     {
       "id": "28-1",
-      "title": "Web3とAIの交差点 - ディスカッションサマリー",
+      "title": "世代別AI利用実態調査レポート",
       "type": "document",
-      "url": "/documents/web3-ai-intersection-summary.md",
-      "description": "セッションの主要な論点と議論内容のまとめ"
+      "url": "/documents/ai-usage-by-generation-report.pdf",
+      "description": "Z世代とシニア世代のAI利用傾向の比較分析"
+    },
+    {
+      "id": "28-2",
+      "title": "MINTAリアルタイム翻訳アプリ - OSSプロジェクト概要",
+      "type": "code",
+      "url": "https://github.com/minta-project/realtime-translator",
+      "description": "音声認識と機械翻訳を組み合わせたリアルタイム翻訳アプリのOSS化"
+    },
+    {
+      "id": "28-3",
+      "title": "AWS Kiro活用ガイド - 仕様書駆動開発",
+      "type": "document",
+      "url": "/documents/aws-kiro-specification-driven-guide.md",
+      "description": "仕様書からコード生成、テスト、デプロイまでの自動化フロー"
+    },
+    {
+      "id": "28-4",
+      "title": "Web3×AI融合ビジネスモデル提案書",
+      "type": "slide",
+      "url": "/slides/web3-ai-business-models.pdf",
+      "description": "トークンエコノミーとAIエージェントを組み合わせた新しいビジネスモデル"
+    },
+    {
+      "id": "28-5",
+      "title": "AI利用における倫理ガイドライン",
+      "type": "document",
+      "url": "/documents/ai-ethics-guidelines.md",
+      "description": "個人情報保護、セキュリティ、透明性に関する実践的ガイドライン"
     }
   ],
-  "thumbnailUrl": "/images/ai-session-generic.svg"
+  "thumbnailUrl": "/images/ai-session-generic.svg",
+  "podcastUrl": "https://notebooklm.google.com/notebook/[NOTEBOOK_ID_HERE]"
 }

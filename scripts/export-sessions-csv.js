@@ -29,6 +29,7 @@ function exportToCSV() {
     '資料数',
     'サムネイルURL',
     '動画URL',
+    'ポッドキャストURL',
     'カテゴリ'
   ];
   
@@ -83,6 +84,7 @@ function exportToCSV() {
       session.materials.length,
       session.thumbnailUrl || '',
       session.videoUrl || '',
+      session.podcastUrl || '',
       getCategory(session.tags)
     ];
     

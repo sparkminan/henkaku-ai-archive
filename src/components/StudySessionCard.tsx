@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Calendar, User, FileText, Play, ExternalLink, Zap, Heart } from 'lucide-react';
+import { Calendar, User, FileText, Play, ExternalLink, Zap, Heart, Headphones } from 'lucide-react';
 import { StudySession } from '@/types';
 import { getImagePath } from '@/utils/config';
 import { useFavorites } from '@/contexts/FavoritesContext';
@@ -129,6 +129,12 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
             <div className="flex items-center group/action">
               <Play className="h-4 w-4 mr-1 group-hover/action:text-neon-pink transition-colors duration-300" />
               <span className="font-cyber text-xs">VIDEO</span>
+            </div>
+          )}
+          {session.podcastUrl && (
+            <div className="flex items-center group/action">
+              <Headphones className="h-4 w-4 mr-1 group-hover/action:text-neon-purple transition-colors duration-300" />
+              <span className="font-cyber text-xs">PODCAST</span>
             </div>
           )}
         </div>

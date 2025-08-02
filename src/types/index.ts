@@ -8,6 +8,7 @@ export interface StudySession {
   materials: Material[];
   videoUrl?: string;
   thumbnailUrl?: string;
+  podcastUrl?: string;
 }
 
 export interface Material {

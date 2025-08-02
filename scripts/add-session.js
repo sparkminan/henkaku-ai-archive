@@ -74,6 +74,9 @@ async function addNewSession() {
   
   // ビデオURL（オプション）
   const videoUrl = await question('ビデオURL (オプション、Enterでスキップ): ');
+  
+  // ポッドキャストURL（オプション）
+  const podcastUrl = await question('ポッドキャストURL (オプション、Enterでスキップ): ');
 
   // セッションオブジェクトを作成
   const session = {
@@ -89,6 +92,10 @@ async function addNewSession() {
   
   if (videoUrl) {
     session.videoUrl = videoUrl;
+  }
+  
+  if (podcastUrl) {
+    session.podcastUrl = podcastUrl;
   }
 
   // ファイルに保存
