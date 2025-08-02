@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     // 最新の4件を取得
-    const sessions = mockData.studySessions
+    const sessions = (mockData.studySessions as StudySession[])
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, 4);
     setRecentSessions(sessions);
@@ -25,7 +25,7 @@ export default function Home() {
       return;
     }
 
-    const results = mockData.studySessions.filter(session =>
+    const results = (mockData.studySessions as StudySession[]).filter(session =>
       session.title.toLowerCase().includes(query.toLowerCase()) ||
       session.description.toLowerCase().includes(query.toLowerCase()) ||
       session.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase())) ||

@@ -16,8 +16,8 @@ export default function Sessions() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    setSessions(mockData.studySessions);
-    setFilteredSessions(mockData.studySessions);
+    setSessions(mockData.studySessions as StudySession[]);
+    setFilteredSessions(mockData.studySessions as StudySession[]);
   }, []);
 
   useEffect(() => {

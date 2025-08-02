@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Calendar, User, FileText, Play, ExternalLink } from 'lucide-react';
+import { Calendar, User, FileText, Play, ExternalLink, Zap } from 'lucide-react';
 import { StudySession } from '@/types';
 
 interface StudySessionCardProps {
@@ -17,54 +17,60 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
     });
   };
 
-  const getTagColor = (tag: string) => {
+  const getTagColor = (tag: string, index: number) => {
     const colors = [
-      'bg-blue-100 text-blue-800',
-      'bg-green-100 text-green-800',
-      'bg-purple-100 text-purple-800',
-      'bg-orange-100 text-orange-800',
-      'bg-red-100 text-red-800',
-      'bg-indigo-100 text-indigo-800',
+      'bg-neon-blue/20 text-neon-blue border-neon-blue/50',
+      'bg-neon-purple/20 text-neon-purple border-neon-purple/50',
+      'bg-neon-pink/20 text-neon-pink border-neon-pink/50',
+      'bg-neon-green/20 text-neon-green border-neon-green/50',
+      'bg-cyber-400/20 text-cyber-400 border-cyber-400/50',
+      'bg-neon-yellow/20 text-neon-yellow border-neon-yellow/50',
     ];
-    return colors[tag.length % colors.length];
+    return colors[index % colors.length];
   };
 
   return (
-    <div className="card p-6 h-full flex flex-col">
+    <div className="card-cyber p-6 h-full flex flex-col group hover:scale-[1.02] transition-all duration-300">
+      {/* ホログラム効果 */}
+      <div className="absolute inset-0 hologram opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl pointer-events-none"></div>
+      
       {/* サムネイル */}
       {session.thumbnailUrl && (
-        <div className="mb-4 rounded-lg overflow-hidden">
+        <div className="relative mb-4 rounded-lg overflow-hidden border border-cyber-500/30 group">
           <img
             src={session.thumbnailUrl}
             alt={session.title}
-            className="w-full h-48 object-cover"
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.src = '/images/placeholder-thumbnail.jpg';
             }}
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* グロー効果 */}
+          <div className="absolute inset-0 bg-neon-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
       )}
 
       {/* タイトル */}
-      <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+      <h3 className="text-xl font-bold text-cyan-100 mb-3 line-clamp-2 group-hover:text-neon-blue transition-colors duration-300">
         {session.title}
       </h3>
 
       {/* メタ情報 */}
-      <div className="flex items-center text-sm text-gray-600 mb-3 space-x-4">
-        <div className="flex items-center">
-          <Calendar className="h-4 w-4 mr-1" />
-          {formatDate(session.date)}
+      <div className="flex items-center text-sm text-cyan-400 mb-4 space-x-4">
+        <div className="flex items-center group/meta">
+          <Calendar className="h-4 w-4 mr-1 group-hover/meta:text-neon-blue transition-colors duration-300" />
+          <span className="font-cyber text-xs">{formatDate(session.date)}</span>
         </div>
-        <div className="flex items-center">
-          <User className="h-4 w-4 mr-1" />
-          {session.presenter}
+        <div className="flex items-center group/meta">
+          <User className="h-4 w-4 mr-1 group-hover/meta:text-neon-purple transition-colors duration-300" />
+          <span className="font-cyber text-xs">{session.presenter}</span>
         </div>
       </div>
 
       {/* 説明 */}
-      <p className="text-gray-700 mb-4 line-clamp-3 flex-grow">
+      <p className="text-cyan-200 mb-4 line-clamp-3 flex-grow leading-relaxed text-sm">
         {session.description}
       </p>
 
@@ -73,39 +79,54 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
         {session.tags.slice(0, 3).map((tag, index) => (
           <span
             key={index}
-            className={`px-2 py-1 rounded-full text-xs font-medium ${getTagColor(tag)}`}
+            className={`px-3 py-1 rounded-full text-xs font-cyber font-medium border transition-all duration-300 hover:scale-105 ${getTagColor(tag, index)}`}
           >
             {tag}
           </span>
         ))}
         {session.tags.length > 3 && (
-          <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+          <span className="px-3 py-1 rounded-full text-xs font-cyber font-medium bg-cyber-500/20 text-cyber-300 border border-cyber-500/50">
             +{session.tags.length - 3}
           </span>
         )}
       </div>
 
       {/* アクション */}
-      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-        <div className="flex items-center space-x-3 text-sm text-gray-600">
-          <div className="flex items-center">
-            <FileText className="h-4 w-4 mr-1" />
-            {session.materials.length}件の資料
+      <div className="flex items-center justify-between pt-4 border-t border-cyber-500/30">
+        <div className="flex items-center space-x-4 text-sm text-cyan-400">
+          <div className="flex items-center group/action">
+            <FileText className="h-4 w-4 mr-1 group-hover/action:text-neon-green transition-colors duration-300" />
+            <span className="font-cyber text-xs">{session.materials.length}件</span>
           </div>
           {session.videoUrl && (
-            <div className="flex items-center">
-              <Play className="h-4 w-4 mr-1" />
-              動画あり
+            <div className="flex items-center group/action">
+              <Play className="h-4 w-4 mr-1 group-hover/action:text-neon-pink transition-colors duration-300" />
+              <span className="font-cyber text-xs">VIDEO</span>
             </div>
           )}
         </div>
+        
         <Link
           href={`/sessions/${session.id}`}
-          className="btn-primary text-sm flex items-center"
+          className="group/button relative btn-cyber-primary text-sm flex items-center overflow-hidden"
         >
-          詳細を見る
-          <ExternalLink className="h-4 w-4 ml-1" />
+          <span className="relative z-10 flex items-center">
+            VIEW
+            <ExternalLink className="h-4 w-4 ml-2 group-hover/button:scale-110 transition-transform duration-300" />
+          </span>
+          
+          {/* ボタンの光る効果 */}
+          <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 
+                          group-hover/button:opacity-20 transition-opacity duration-300 blur-sm"></div>
         </Link>
+      </div>
+      
+      {/* カードの光る縁取り効果 */}
+      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+           style={{
+             background: 'linear-gradient(45deg, transparent 30%, rgba(0, 245, 255, 0.1) 50%, transparent 70%)',
+             backgroundSize: '200% 200%',
+           }}>
       </div>
     </div>
   );

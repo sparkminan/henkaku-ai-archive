@@ -1,69 +1,93 @@
 import React from 'react';
 import Link from 'next/link';
-import { Github, Twitter, ExternalLink } from 'lucide-react';
+import { Github, Twitter, ExternalLink, Zap, Brain, Code2 } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative bg-dark-900 border-t border-cyber-500/30 overflow-hidden">
+      {/* 背景グリッド効果 */}
+      <div className="absolute inset-0 cyber-grid opacity-30"></div>
+      
+      {/* グラデーション背景 */}
+      <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-800/50 to-transparent"></div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* サイト情報 */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">H</span>
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="relative w-12 h-12 bg-gradient-to-br from-neon-blue to-neon-purple rounded-lg flex items-center justify-center shadow-neon-blue floating">
+                <Zap className="text-dark-900 w-7 h-7" />
+                <div className="absolute inset-0 bg-neon-blue opacity-20 rounded-lg blur-sm"></div>
               </div>
               <div>
-                <h3 className="text-lg font-bold">HENKAKU 生成AI会</h3>
-                <p className="text-sm text-gray-400">情報アーカイブサイト</p>
+                <h3 className="text-xl font-cyber font-bold text-neon-blue">
+                  HENKAKU AI LAB
+                </h3>
+                <p className="text-sm text-cyber-300 font-cyber tracking-wider">
+                  GENERATIVE AI ARCHIVE
+                </p>
               </div>
             </div>
-            <p className="text-gray-400 mb-4">
-              HENKAKUコミュニティの生成AI勉強会で発表された資料や情報をアーカイブしています。
-              最新の生成AI技術について学び、実践的な知識を共有する場を提供します。
+            
+            <p className="text-cyan-200 mb-6 leading-relaxed">
+              HENKAKUコミュニティの生成AI勉強会アーカイブ。最新のAI技術を学び、
+              実践的な知識を共有するサイバー空間へようこそ。
             </p>
+            
             <div className="flex space-x-4">
               <a
                 href="https://github.com/henkaku"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="p-3 bg-dark-700/50 border border-cyber-500/50 rounded-lg text-cyan-300 
+                         hover:text-neon-blue hover:border-neon-blue hover:shadow-neon-blue 
+                         transition-all duration-300 group"
               >
-                <Github className="h-5 w-5" />
+                <Github className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
                 href="https://twitter.com/henkaku"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="p-3 bg-dark-700/50 border border-cyber-500/50 rounded-lg text-cyan-300 
+                         hover:text-neon-blue hover:border-neon-blue hover:shadow-neon-blue 
+                         transition-all duration-300 group"
               >
-                <Twitter className="h-5 w-5" />
+                <Twitter className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               </a>
             </div>
           </div>
 
           {/* クイックリンク */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">クイックリンク</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg font-cyber font-semibold mb-6 text-neon-purple flex items-center">
+              <Brain className="h-5 w-5 mr-2" />
+              NAVIGATION
+            </h4>
+            <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
-                  ホーム
+                <Link href="/" className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium relative group">
+                  HOME
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
               <li>
-                <Link href="/sessions" className="text-gray-400 hover:text-white transition-colors">
-                  勉強会一覧
+                <Link href="/sessions" className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium relative group">
+                  SESSIONS
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
               <li>
-                <Link href="/categories" className="text-gray-400 hover:text-white transition-colors">
-                  カテゴリ
+                <Link href="/categories" className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium relative group">
+                  CATEGORIES
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
-                  このサイトについて
+                <Link href="/about" className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium relative group">
+                  ABOUT
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
             </ul>
@@ -71,17 +95,21 @@ const Footer: React.FC = () => {
 
           {/* リソース */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">リソース</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg font-cyber font-semibold mb-6 text-neon-pink flex items-center">
+              <Code2 className="h-5 w-5 mr-2" />
+              RESOURCES
+            </h4>
+            <ul className="space-y-3">
               <li>
                 <a
                   href="https://henkaku.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center"
+                  className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium 
+                           flex items-center group"
                 >
-                  HENKAKU公式サイト
-                  <ExternalLink className="h-4 w-4 ml-1" />
+                  HENKAKU OFFICIAL
+                  <ExternalLink className="h-4 w-4 ml-2 group-hover:scale-110 transition-transform duration-300" />
                 </a>
               </li>
               <li>
@@ -89,27 +117,45 @@ const Footer: React.FC = () => {
                   href="https://discord.gg/henkaku"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center"
+                  className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium 
+                           flex items-center group"
                 >
-                  Discordコミュニティ
-                  <ExternalLink className="h-4 w-4 ml-1" />
+                  DISCORD COMMUNITY
+                  <ExternalLink className="h-4 w-4 ml-2 group-hover:scale-110 transition-transform duration-300" />
                 </a>
               </li>
               <li>
-                <Link href="/contribute" className="text-gray-400 hover:text-white transition-colors">
-                  資料投稿について
+                <Link href="/contribute" className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium relative group">
+                  CONTRIBUTE
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2024 HENKAKU 生成AI会. このサイトはコミュニティによって運営されています.
+        {/* 分割線 */}
+        <div className="border-t border-cyber-500/30 mt-12 pt-8 text-center relative">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent"></div>
+          
+          <p className="text-cyan-400 text-sm font-cyber">
+            © 2024 HENKAKU GENERATIVE AI LAB. POWERED BY COMMUNITY.
           </p>
+          
+          {/* デコレーション */}
+          <div className="flex justify-center mt-4 space-x-2">
+            <div className="w-2 h-2 bg-neon-blue rounded-full pulse-cyber"></div>
+            <div className="w-2 h-2 bg-neon-purple rounded-full pulse-cyber" style={{animationDelay: '0.5s'}}></div>
+            <div className="w-2 h-2 bg-neon-pink rounded-full pulse-cyber" style={{animationDelay: '1s'}}></div>
+          </div>
         </div>
       </div>
+      
+      {/* フローティング要素 */}
+      <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-neon-blue/10 to-neon-purple/10 
+                      rounded-full blur-xl floating opacity-60"></div>
+      <div className="absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-br from-neon-pink/10 to-neon-blue/10 
+                      rounded-full blur-xl floating opacity-40" style={{animationDelay: '2s'}}></div>
     </footer>
   );
 };

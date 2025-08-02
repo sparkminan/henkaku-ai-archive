@@ -19,8 +19,8 @@ export default function Categories() {
     };
 
     const relevantTags = categoryTagMap[categoryId] || [];
-    return mockData.studySessions.filter(session =>
-      session.tags.some(tag => relevantTags.includes(tag))
+    return (mockData.studySessions as any[]).filter(session =>
+      session.tags.some((tag: string) => relevantTags.includes(tag))
     ).length;
   };
 

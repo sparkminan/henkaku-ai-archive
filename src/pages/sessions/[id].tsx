@@ -285,7 +285,7 @@ export default function SessionDetail({ session }: SessionDetailProps) {
 }
 
 export async function getStaticPaths() {
-  const paths = mockData.studySessions.map((session) => ({
+  const paths = (mockData.studySessions as StudySession[]).map((session) => ({
     params: { id: session.id },
   }));
 
@@ -293,7 +293,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: { id: string } }) {
-  const session = mockData.studySessions.find(s => s.id === params.id) || null;
+  const session = (mockData.studySessions as StudySession[]).find(s => s.id === params.id) || null;
 
   return {
     props: {
