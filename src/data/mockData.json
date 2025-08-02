@@ -1,0 +1,138 @@
+{
+  "studySessions": [
+    {
+      "id": "1",
+      "title": "ChatGPTの基本的な使い方と活用方法",
+      "date": "2024-01-15",
+      "presenter": "田中太郎",
+      "description": "ChatGPTの基本的な機能や効果的なプロンプトの書き方、実際のワークフローへの組み込み方について学びます。初心者向けの内容から始めて、実践的な活用事例までカバーします。",
+      "tags": ["ChatGPT", "プロンプト", "基礎", "活用"],
+      "materials": [
+        {
+          "id": "1-1",
+          "title": "ChatGPT活用ガイド",
+          "type": "slide",
+          "url": "/documents/chatgpt-guide.pdf",
+          "description": "ChatGPTの基本的な使い方をまとめたスライド"
+        },
+        {
+          "id": "1-2",
+          "title": "プロンプト例集",
+          "type": "document",
+          "url": "/documents/prompt-examples.md",
+          "description": "実際に使えるプロンプトの例集"
+        }
+      ],
+      "thumbnailUrl": "/images/chatgpt-thumbnail.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Stable Diffusionを使った画像生成",
+      "date": "2024-02-20",
+      "presenter": "佐藤花子",
+      "description": "Stable Diffusionを使った高品質な画像生成技術について学びます。プロンプトエンジニアリングから、ControlNetを使った高度な制御まで幅広くカバーします。",
+      "tags": ["Stable Diffusion", "画像生成", "ControlNet", "プロンプト"],
+      "materials": [
+        {
+          "id": "2-1",
+          "title": "Stable Diffusion入門",
+          "type": "slide",
+          "url": "/documents/stable-diffusion-intro.pdf",
+          "description": "Stable Diffusionの基本概念と使い方"
+        },
+        {
+          "id": "2-2",
+          "title": "ControlNet実践ガイド",
+          "type": "code",
+          "url": "/documents/controlnet-examples.ipynb",
+          "description": "ControlNetを使った実践的なコード例"
+        }
+      ],
+      "videoUrl": "https://example.com/video/stable-diffusion",
+      "thumbnailUrl": "/images/stable-diffusion-thumbnail.jpg"
+    },
+    {
+      "id": "3",
+      "title": "LangChainによるRAGシステム構築",
+      "date": "2024-03-18",
+      "presenter": "山田次郎",
+      "description": "LangChainを使ったRetrieval-Augmented Generation（RAG）システムの構築方法について学びます。ドキュメント検索から回答生成まで、一連の流れを実装します。",
+      "tags": ["LangChain", "RAG", "検索", "システム構築"],
+      "materials": [
+        {
+          "id": "3-1",
+          "title": "RAGシステム概要",
+          "type": "slide",
+          "url": "/documents/rag-overview.pdf",
+          "description": "RAGシステムの基本概念と構成要素"
+        },
+        {
+          "id": "3-2",
+          "title": "LangChain実装例",
+          "type": "code",
+          "url": "/documents/langchain-rag.py",
+          "description": "LangChainを使ったRAGシステムの実装例"
+        }
+      ],
+      "thumbnailUrl": "/images/langchain-thumbnail.jpg"
+    },
+    {
+      "id": "4",
+      "title": "生成AIのビジネス活用事例",
+      "date": "2024-04-22",
+      "presenter": "鈴木三郎",
+      "description": "実際の企業で生成AIがどのように活用されているかの事例紹介と、導入時の注意点やベストプラクティスについて議論します。",
+      "tags": ["ビジネス活用", "事例紹介", "導入", "ベストプラクティス"],
+      "materials": [
+        {
+          "id": "4-1",
+          "title": "AI活用事例集",
+          "type": "document",
+          "url": "/documents/ai-business-cases.pdf",
+          "description": "企業でのAI活用成功事例をまとめた資料"
+        },
+        {
+          "id": "4-2",
+          "title": "導入チェックリスト",
+          "type": "document",
+          "url": "/documents/ai-implementation-checklist.pdf",
+          "description": "AI導入時に確認すべき項目のチェックリスト"
+        }
+      ],
+      "videoUrl": "https://example.com/video/business-ai",
+      "thumbnailUrl": "/images/business-ai-thumbnail.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "id": "fundamentals",
+      "name": "基礎知識",
+      "description": "生成AIの基本的な概念や使い方",
+      "color": "blue"
+    },
+    {
+      "id": "image-generation",
+      "name": "画像生成",
+      "description": "Stable Diffusion等を使った画像生成技術",
+      "color": "purple"
+    },
+    {
+      "id": "text-generation",
+      "name": "テキスト生成",
+      "description": "ChatGPT等を使ったテキスト生成技術",
+      "color": "green"
+    },
+    {
+      "id": "development",
+      "name": "開発・実装",
+      "description": "生成AIを使ったシステム開発",
+      "color": "orange"
+    },
+    {
+      "id": "business",
+      "name": "ビジネス活用",
+      "description": "企業でのAI活用事例と戦略",
+      "color": "red"
+    }
+  ]
+}
