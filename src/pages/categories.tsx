@@ -219,7 +219,7 @@ export default function Categories() {
                   <div className="mt-12 pt-8 border-t border-cyber-500/30 text-center">
                     <div className="inline-flex items-center space-x-4">
                       <div className="text-5xl font-cyber font-black text-transparent bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text">
-                        {mockData.studySessions.length}
+                        {sessions.length}
                       </div>
                       <div className="text-left">
                         <div className="text-sm font-cyber text-cyber-400 uppercase">TOTAL</div>
