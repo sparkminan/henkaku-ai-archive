@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onSearch }) => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header onSearch={onSearch} />
-      <main className="flex-grow">
+      <main className="flex-grow pt-16">
         {children}
       </main>
       <Footer />

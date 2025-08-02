@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   };
 
   return (
-    <header className="relative bg-dark-800/95 backdrop-blur-cyber border-b border-cyber-500/30 shadow-cyber-glow">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-dark-800/95 backdrop-blur-cyber border-b border-cyber-500/30 shadow-cyber-glow">
       {/* ホログラム効果 */}
       <div className="absolute inset-0 hologram opacity-20 pointer-events-none"></div>
       

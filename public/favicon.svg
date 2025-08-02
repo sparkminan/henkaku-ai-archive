@@ -1,0 +1,39 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cyber-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bf00ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#0a0a0b"/>
+  
+  <!-- Outer hexagon -->
+  <path d="M16 3 L27 9 L27 23 L16 29 L5 23 L5 9 Z" 
+        fill="none" 
+        stroke="url(#cyber-gradient)" 
+        stroke-width="2"
+        filter="url(#glow)"/>
+  
+  <!-- Inner AI symbol -->
+  <g fill="url(#cyber-gradient)" filter="url(#glow)">
+    <!-- Letter A -->
+    <path d="M11 22 L14 12 L16 12 L19 22 M12.5 18 L17.5 18" 
+          stroke="url(#cyber-gradient)" 
+          stroke-width="2" 
+          fill="none"/>
+    
+    <!-- Letter I (stylized as circuit) -->
+    <circle cx="21" cy="12" r="1.5" fill="url(#cyber-gradient)"/>
+    <rect x="20" y="14" width="2" height="8" fill="url(#cyber-gradient)"/>
+    <circle cx="21" cy="22" r="1.5" fill="url(#cyber-gradient)"/>
+  </g>
+</svg>

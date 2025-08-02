@@ -31,13 +31,13 @@ const Footer: React.FC = () => {
             </div>
             
             <p className="text-cyan-200 mb-6 leading-relaxed">
-              HENKAKUコミュニティの生成AI勉強会アーカイブ。最新のAI技術を学び、
-              実践的な知識を共有するサイバー空間へようこそ。
+              HENKAKUコミュニティにおける有志の勉強会「生成AI会」のアーカイブ。
+              最新のAI技術を楽しく議論しながら学び、実験して日々の生活に役立てる。
             </p>
             
             <div className="flex space-x-4">
               <a
-                href="https://github.com/henkaku"
+                href="https://github.com/sparkminan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-dark-700/50 border border-cyber-500/50 rounded-lg text-cyan-300 
@@ -47,14 +47,14 @@ const Footer: React.FC = () => {
                 <Github className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
-                href="https://twitter.com/henkaku"
+                href="https://x.com/spark_infinity8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-dark-700/50 border border-cyber-500/50 rounded-lg text-cyan-300 
                          hover:text-neon-blue hover:border-neon-blue hover:shadow-neon-blue 
-                         transition-all duration-300 group"
+                         transition-all duration-300 group font-cyber font-bold text-lg"
               >
-                <Twitter className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                𝕏
               </a>
             </div>
           </div>
@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://discord.gg/henkaku"
+                  href="https://community.henkaku.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium 
@@ -123,12 +123,6 @@ const Footer: React.FC = () => {
                   DISCORD COMMUNITY
                   <ExternalLink className="h-4 w-4 ml-2 group-hover:scale-110 transition-transform duration-300" />
                 </a>
-              </li>
-              <li>
-                <Link href="/contribute" className="text-cyan-300 hover:text-neon-blue transition-colors duration-300 font-medium relative group">
-                  CONTRIBUTE
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue group-hover:w-full transition-all duration-300"></span>
-                </Link>
               </li>
             </ul>
           </div>
@@ -139,7 +133,7 @@ const Footer: React.FC = () => {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent"></div>
           
           <p className="text-cyan-400 text-sm font-cyber">
-            © 2024 HENKAKU GENERATIVE AI LAB. POWERED BY COMMUNITY.
+            © 2025 HENKAKU GENERATIVE AI LAB. POWERED BY COMMUNITY.
           </p>
           
           {/* デコレーション */}

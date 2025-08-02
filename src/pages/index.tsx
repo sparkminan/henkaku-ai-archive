@@ -51,7 +51,7 @@ export default function Home() {
     <>
       <Head>
         <title>HENKAKU AI LAB - 生成AI勉強会アーカイブ</title>
-        <meta name="description" content="HENKAKU生成AI会の勉強会資料・情報をアーカイブするサイバー空間。最新のAI技術について学べる未来的なプラットフォーム。" />
+        <meta name="description" content="HENKAKUコミュニティにおける有志の勉強会「生成AI会」のアーカイブ。最新のAI技術を楽しく議論しながら学び、実験して日々の生活に役立てるプラットフォーム。" />
       </Head>
 
       <Layout onSearch={handleSearch}>
@@ -89,8 +89,7 @@ export default function Home() {
                     </p>
                     
                     <p className="text-lg mb-8 text-cyan-300 leading-relaxed max-w-2xl">
-                      未来への扉を開く生成AI技術。HENKAKUコミュニティが蓄積した
-                      知識と洞察を、この電脳空間でご体験ください。
+                      HENKAKUコミュニティにおける有志の勉強会「生成AI会」のアーカイブです。
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -209,11 +208,9 @@ export default function Home() {
                 </div>
 
                 <div className="text-center">
-                  <Link href="/sessions" className="btn-cyber-primary text-lg px-8 py-4 group">
-                    <span className="flex items-center">
-                      全セッション探索
-                      <Zap className="h-5 w-5 ml-2 group-hover:rotate-12 transition-transform duration-300" />
-                    </span>
+                  <Link href="/sessions" className="inline-flex items-center btn-cyber-primary text-lg px-8 py-4 group">
+                    全セッション探索
+                    <Zap className="h-5 w-5 ml-2 group-hover:rotate-12 transition-transform duration-300" />
                   </Link>
                 </div>
               </div>

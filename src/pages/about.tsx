@@ -45,15 +45,8 @@ export default function About() {
                   <h2 className="text-2xl font-cyber font-bold text-neon-blue">MISSION</h2>
                 </div>
                 <div className="text-cyan-200 leading-relaxed">
-                  <p className="mb-4">
-                    HENKAKU AI LABは、HENKAKUコミュニティで開催される「生成AI会」の勉強会で発表された
-                    資料や知識を体系的にアーカイブし、最新のAI技術を誰もが学べる
-                    サイバー空間を提供することを目的としています。
-                  </p>
                   <p>
-                    急速に進化する生成AI技術の最前線をキャッチアップし、
-                    実践的な知識と経験を共有することで、
-                    日本のAI技術コミュニティの発展に貢献します。
+                    HENKAKU AI LABは、HENKAKUコミュニティで開催している「生成AI会」の勉強会で発表された内容をアーカイブし、最新のAI技術を楽しく議論しながら学び、実験して日々の生活に役立てることを目的としています。
                   </p>
                 </div>
               </section>
@@ -99,10 +92,7 @@ export default function About() {
                 <div className="mb-8">
                   <h3 className="text-xl font-cyber text-neon-green mb-4">合同会社texx</h3>
                   <p className="text-cyan-200 leading-relaxed mb-6">
-                    最先端のテクノロジーとクリエイティビティを融合し、
-                    未来のデジタル体験を創造する開発集団。
-                    AI、Web3、XRなどの先端技術を活用した
-                    革新的なソリューションを提供しています。
+                    最先端のテクノロジーとクリエイティビティを融合し、デジタル体験の創造、使いこなしをけん引し、すべての人にわかりやすく伝えてテクノロジーとの共生の楽しさを届けるチームです。 AI、Web3、XRなどの先端技術を活用した 革新的なソリューションを提供しています。
                   </p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -112,9 +102,7 @@ export default function About() {
                         <h4 className="text-lg font-cyber text-neon-blue">Spark</h4>
                       </div>
                       <p className="text-cyan-300 text-sm leading-relaxed">
-                        プロジェクトリード・エンジニア。
-                        AI技術とクリエイティブコーディングの専門家として、
-                        革新的なデジタル体験の設計と実装を担当。
+                        texx共同創業者CEO兼CSO。AI技術をはじめとした先端技術の探索と社会適用を目指しデジタル体験の設計と実装を担当。
                       </p>
                     </div>
                     
@@ -124,9 +112,7 @@ export default function About() {
                         <h4 className="text-lg font-cyber text-neon-purple">Minta</h4>
                       </div>
                       <p className="text-cyan-300 text-sm leading-relaxed">
-                        テクニカルディレクター。
-                        システムアーキテクチャとUI/UX設計を統括し、
-                        ユーザー体験の最適化を推進。
+                        texx共同創業者CEO兼CTO。vibecoder、インフルエンサー。先端技術の使いこなしとプレゼンテーション、UI/UX設計を統括し、外部発信を通じて先端技術の社会適用を担当。
                       </p>
                     </div>
                   </div>
@@ -245,7 +231,7 @@ export default function About() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a
-                      href="https://discord.gg/henkaku"
+                      href="https://community.henkaku.org/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-cyber-primary flex items-center justify-center group"
@@ -284,7 +270,7 @@ export default function About() {
                   </p>
                   <div className="bg-dark-700/50 border border-cyber-500/30 rounded-lg p-4">
                     <p className="text-sm text-cyan-400 font-cyber">
-                      制作・監修: 合同会社texx (Spark & Minta)
+                      制作・監修: 合同会社texx (spark & minta)
                     </p>
                   </div>
                 </div>

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "add-session": "node scripts/add-session.js",
-    "split-sessions": "node scripts/split-sessions.js"
+    "split-sessions": "node scripts/split-sessions.js",
+    "export-csv": "node scripts/export-sessions-csv.js"
   },
   "dependencies": {
     "next": "^14.0.0",
