@@ -215,63 +215,6 @@ export default function Home() {
                 </div>
               </div>
             </section>
-
-            {/* カテゴリセクション */}
-            <section className="py-16 bg-dark-800/80 relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyber-500/5 to-transparent"></div>
-              
-              <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
-                  <h2 className="text-4xl font-cyber font-bold text-neon-purple mb-4">
-                    KNOWLEDGE DOMAINS
-                  </h2>
-                  <div className="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-pink mx-auto mb-6"></div>
-                  
-                  <p className="text-lg text-cyan-300 max-w-3xl mx-auto leading-relaxed">
-                    専門分野別に整理された知識体系から、
-                    あなたの興味に最適化された学習パスを発見してください。
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {getCategories().map((category, index) => (
-                    <Link
-                      key={category.id}
-                      href={`/categories/${category.id}`}
-                      className="card-cyber p-8 group hover:scale-105 transition-all duration-300"
-                    >
-                      <div className={`w-16 h-16 rounded-xl mb-6 bg-gradient-to-br from-${category.color}-400/20 to-${category.color}-600/20 
-                                     border border-${category.color}-400/50 flex items-center justify-center 
-                                     group-hover:border-${category.color}-300 group-hover:shadow-[0_0_20px_rgba(${
-                                       category.color === 'blue' ? '0,245,255' :
-                                       category.color === 'purple' ? '191,0,255' :
-                                       category.color === 'green' ? '0,255,65' :
-                                       category.color === 'orange' ? '255,165,0' :
-                                       category.color === 'red' ? '255,0,128' :
-                                       category.color === 'indigo' ? '75,0,130' : '255,192,203'
-                                     },0.3)] transition-all duration-300`}>
-                        <div className={`w-8 h-8 bg-gradient-to-br from-${category.color}-400 to-${category.color}-600 rounded`}></div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-cyber font-bold text-cyan-100 mb-3 group-hover:text-neon-blue transition-colors duration-300">
-                        {category.name}
-                      </h3>
-                      
-                      <p className="text-cyan-300 leading-relaxed">
-                        {category.description}
-                      </p>
-                      
-                      <div className="mt-6 flex items-center justify-between">
-                        <span className="text-sm text-cyber-400 font-cyber">
-                          EXPLORE →
-                        </span>
-                        <div className="w-8 h-0.5 bg-gradient-to-r from-neon-blue to-transparent group-hover:to-neon-blue transition-all duration-300"></div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </section>
           </>
         ) : (
           // 検索結果表示
