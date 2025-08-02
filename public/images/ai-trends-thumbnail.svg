@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-grad-trends" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1e0a2e"/>
+    </linearGradient>
+    <linearGradient id="trend-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00f5ff"/>
+      <stop offset="50%" style="stop-color:#bf00ff"/>
+      <stop offset="100%" style="stop-color:#ff0080"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#bg-grad-trends)"/>
+  
+  <!-- Grid lines -->
+  <g opacity="0.2">
+    <line x1="50" y1="250" x2="350" y2="250" stroke="#00f5ff" stroke-width="1"/>
+    <line x1="50" y1="200" x2="350" y2="200" stroke="#00f5ff" stroke-width="0.5"/>
+    <line x1="50" y1="150" x2="350" y2="150" stroke="#00f5ff" stroke-width="0.5"/>
+    <line x1="50" y1="100" x2="350" y2="100" stroke="#00f5ff" stroke-width="0.5"/>
+    <line x1="50" y1="50" x2="350" y2="50" stroke="#00f5ff" stroke-width="0.5"/>
+    
+    <line x1="50" y1="50" x2="50" y2="250" stroke="#00f5ff" stroke-width="1"/>
+    <line x1="150" y1="50" x2="150" y2="250" stroke="#00f5ff" stroke-width="0.5"/>
+    <line x1="250" y1="50" x2="250" y2="250" stroke="#00f5ff" stroke-width="0.5"/>
+    <line x1="350" y1="50" x2="350" y2="250" stroke="#00f5ff" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Trend line -->
+  <path d="M 50 220 Q 100 200, 150 180 T 250 120 Q 300 80, 350 60" 
+        stroke="url(#trend-gradient)" stroke-width="4" fill="none" filter="url(#glow)"/>
+  
+  <!-- Data points -->
+  <g filter="url(#glow)">
+    <circle cx="50" cy="220" r="5" fill="#00f5ff"/>
+    <circle cx="100" cy="200" r="5" fill="#00f5ff"/>
+    <circle cx="150" cy="180" r="5" fill="#bf00ff"/>
+    <circle cx="200" cy="150" r="5" fill="#bf00ff"/>
+    <circle cx="250" cy="120" r="5" fill="#ff0080"/>
+    <circle cx="300" cy="80" r="5" fill="#ff0080"/>
+    <circle cx="350" cy="60" r="5" fill="#ff0080"/>
+  </g>
+  
+  <!-- Projection lines -->
+  <g opacity="0.5" stroke-dasharray="5,5">
+    <line x1="350" y1="60" x2="380" y2="40" stroke="#ff0080" stroke-width="2"/>
+    <circle cx="380" cy="40" r="3" fill="#ff0080" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Tech indicators -->
+  <g opacity="0.8" font-family="monospace" font-size="10" fill="#00ff41">
+    <text x="100" y="190" text-anchor="middle">GPT</text>
+    <text x="200" y="140" text-anchor="middle">AGI</text>
+    <text x="300" y="70" text-anchor="middle">SINGULARITY</text>
+  </g>
+  
+  <text x="200" y="30" text-anchor="middle" font-family="monospace" font-size="18" fill="#bf00ff" filter="url(#glow)">AI TRENDS</text>
+  <text x="200" y="280" text-anchor="middle" font-family="monospace" font-size="14" fill="#00f5ff" opacity="0.8">FUTURE TRAJECTORY</text>
+</svg>

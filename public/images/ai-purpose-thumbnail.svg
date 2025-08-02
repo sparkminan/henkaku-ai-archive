@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-grad-purpose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a0f2e"/>
+    </linearGradient>
+    <linearGradient id="brain-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#bf00ff"/>
+      <stop offset="50%" style="stop-color:#00f5ff"/>
+      <stop offset="100%" style="stop-color:#ff0080"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#bg-grad-purpose)"/>
+  
+  <!-- Neural network nodes -->
+  <g opacity="0.3">
+    <circle cx="100" cy="100" r="3" fill="#00f5ff"/>
+    <circle cx="150" cy="80" r="3" fill="#bf00ff"/>
+    <circle cx="200" cy="120" r="3" fill="#ff0080"/>
+    <circle cx="250" cy="90" r="3" fill="#00f5ff"/>
+    <circle cx="300" cy="110" r="3" fill="#bf00ff"/>
+    <circle cx="120" cy="180" r="3" fill="#ff0080"/>
+    <circle cx="180" cy="200" r="3" fill="#00f5ff"/>
+    <circle cx="240" cy="190" r="3" fill="#bf00ff"/>
+    <circle cx="280" cy="210" r="3" fill="#ff0080"/>
+  </g>
+  
+  <!-- Connecting lines -->
+  <g opacity="0.2">
+    <line x1="100" y1="100" x2="150" y2="80" stroke="#00f5ff" stroke-width="1"/>
+    <line x1="150" y1="80" x2="200" y2="120" stroke="#bf00ff" stroke-width="1"/>
+    <line x1="200" y1="120" x2="250" y2="90" stroke="#ff0080" stroke-width="1"/>
+    <line x1="250" y1="90" x2="300" y2="110" stroke="#00f5ff" stroke-width="1"/>
+    <line x1="120" y1="180" x2="180" y2="200" stroke="#bf00ff" stroke-width="1"/>
+    <line x1="180" y1="200" x2="240" y2="190" stroke="#ff0080" stroke-width="1"/>
+    <line x1="240" y1="190" x2="280" y2="210" stroke="#00f5ff" stroke-width="1"/>
+  </g>
+  
+  <!-- Central brain/AI symbol -->
+  <g transform="translate(200, 150)">
+    <circle r="60" fill="none" stroke="url(#brain-gradient)" stroke-width="2" opacity="0.5"/>
+    <circle r="50" fill="none" stroke="url(#brain-gradient)" stroke-width="2" opacity="0.7"/>
+    <circle r="40" fill="none" stroke="url(#brain-gradient)" stroke-width="3" filter="url(#glow)"/>
+    
+    <!-- Question mark -->
+    <text x="0" y="10" text-anchor="middle" font-family="monospace" font-size="48" fill="#00f5ff" filter="url(#glow)">?</text>
+  </g>
+  
+  <!-- Purpose text -->
+  <text x="200" y="40" text-anchor="middle" font-family="monospace" font-size="16" fill="#bf00ff" opacity="0.8">PURPOSE</text>
+  <text x="200" y="280" text-anchor="middle" font-family="monospace" font-size="16" fill="#00f5ff" opacity="0.8">AI PHILOSOPHY</text>
+</svg>

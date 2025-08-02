@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-grad-cursor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="cursor-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff41"/>
+      <stop offset="100%" style="stop-color:#00f5ff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#bg-grad-cursor)"/>
+  
+  <!-- Grid -->
+  <pattern id="grid-cursor" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="0" x2="0" y2="30" stroke="#00ff41" stroke-width="0.3" opacity="0.2"/>
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#00ff41" stroke-width="0.3" opacity="0.2"/>
+  </pattern>
+  <rect width="400" height="300" fill="url(#grid-cursor)"/>
+  
+  <!-- Cursor editor window -->
+  <rect x="30" y="50" width="150" height="200" rx="5" fill="#0a0a0a" stroke="#00ff41" stroke-width="2" opacity="0.9"/>
+  <text x="105" y="40" text-anchor="middle" font-family="monospace" font-size="14" fill="#00ff41" filter="url(#glow)">CURSOR</text>
+  
+  <!-- Code lines in cursor -->
+  <g opacity="0.7">
+    <rect x="40" y="70" width="60" height="2" fill="#00ff41"/>
+    <rect x="40" y="80" width="80" height="2" fill="#00f5ff"/>
+    <rect x="40" y="90" width="70" height="2" fill="#bf00ff"/>
+    <rect x="40" y="100" width="90" height="2" fill="#00ff41"/>
+  </g>
+  
+  <!-- Obsidian graph -->
+  <g transform="translate(280, 150)">
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#bf00ff" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="-50" cy="-30" r="15" fill="none" stroke="#bf00ff" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="50" cy="-30" r="15" fill="none" stroke="#bf00ff" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="-50" cy="30" r="15" fill="none" stroke="#bf00ff" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="50" cy="30" r="15" fill="none" stroke="#bf00ff" stroke-width="1.5" opacity="0.7"/>
+    
+    <!-- Connections -->
+    <line x1="0" y1="0" x2="-50" y2="-30" stroke="#bf00ff" stroke-width="1" opacity="0.5"/>
+    <line x1="0" y1="0" x2="50" y2="-30" stroke="#bf00ff" stroke-width="1" opacity="0.5"/>
+    <line x1="0" y1="0" x2="-50" y2="30" stroke="#bf00ff" stroke-width="1" opacity="0.5"/>
+    <line x1="0" y1="0" x2="50" y2="30" stroke="#bf00ff" stroke-width="1" opacity="0.5"/>
+  </g>
+  <text x="280" y="40" text-anchor="middle" font-family="monospace" font-size="14" fill="#bf00ff" filter="url(#glow)">OBSIDIAN</text>
+  
+  <!-- Connection arrow -->
+  <path d="M 180 150 L 220 150" stroke="url(#cursor-gradient)" stroke-width="3" fill="none" filter="url(#glow)" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00f5ff"/>
+    </marker>
+  </defs>
+  
+  <text x="200" y="280" text-anchor="middle" font-family="monospace" font-size="16" fill="#00ff41" filter="url(#glow)">KNOWLEDGE SYNTHESIS</text>
+</svg>

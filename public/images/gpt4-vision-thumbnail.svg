@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-grad-vision" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#0a1a2e"/>
+    </linearGradient>
+    <radialGradient id="eye-gradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00f5ff"/>
+      <stop offset="50%" style="stop-color:#bf00ff"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#bg-grad-vision)"/>
+  
+  <!-- Scan lines -->
+  <g opacity="0.1">
+    <line x1="0" y1="50" x2="400" y2="50" stroke="#00f5ff" stroke-width="1">
+      <animate attributeName="y1" values="50;250;50" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y2" values="50;250;50" dur="5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="0" y1="150" x2="400" y2="150" stroke="#00f5ff" stroke-width="1">
+      <animate attributeName="y1" values="150;50;250;150" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="y2" values="150;50;250;150" dur="7s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- AI Eye -->
+  <g transform="translate(200, 150)">
+    <!-- Outer ring -->
+    <circle r="60" fill="none" stroke="#00f5ff" stroke-width="2" opacity="0.5" filter="url(#glow)">
+      <animate attributeName="r" values="60;65;60" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Eye shape -->
+    <ellipse rx="50" ry="25" fill="none" stroke="#bf00ff" stroke-width="3" filter="url(#glow)"/>
+    
+    <!-- Iris -->
+    <circle r="25" fill="url(#eye-gradient)" opacity="0.8"/>
+    
+    <!-- Pupil -->
+    <circle r="10" fill="#0a0a0a"/>
+    <circle r="8" fill="#00f5ff" opacity="0.8" filter="url(#glow)">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Data streams -->
+    <g opacity="0.6">
+      <rect x="-2" y="-80" width="4" height="20" fill="#00ff41">
+        <animate attributeName="y" values="-80;-30" dur="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="-2" y="60" width="4" height="20" fill="#00ff41">
+        <animate attributeName="y" values="60;30" dur="1s" begin="0.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" dur="1s" begin="0.5s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+  </g>
+  
+  <!-- Corner indicators -->
+  <g opacity="0.8" stroke="#00ff41" stroke-width="2" fill="none">
+    <path d="M 50 50 L 50 70 L 70 70" />
+    <path d="M 350 50 L 330 50 L 330 70" />
+    <path d="M 50 250 L 50 230 L 70 230" />
+    <path d="M 350 250 L 350 230 L 330 230" />
+  </g>
+  
+  <!-- Recognition points -->
+  <g opacity="0.6">
+    <circle cx="100" cy="100" r="3" fill="#ff0080" filter="url(#glow)">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="100" r="3" fill="#ff0080" filter="url(#glow)">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="200" r="3" fill="#ff0080" filter="url(#glow)">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="200" r="3" fill="#ff0080" filter="url(#glow)">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <text x="200" y="40" text-anchor="middle" font-family="monospace" font-size="18" fill="#00f5ff" filter="url(#glow)">GPT-4 VISION</text>
+  <text x="200" y="280" text-anchor="middle" font-family="monospace" font-size="14" fill="#bf00ff" opacity="0.8">VISUAL INTELLIGENCE</text>
+</svg>

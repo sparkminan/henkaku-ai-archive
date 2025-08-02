@@ -16,7 +16,7 @@
           "description": "Claude Codeを初めて使った感想と学び"
         }
       ],
-      "thumbnailUrl": "/images/claude-code-thumbnail.jpg"
+      "thumbnailUrl": "/images/claude-code-thumbnail.svg"
     },
     {
       "id": "26",
@@ -34,7 +34,7 @@
           "description": "AIの存在意義と社会的役割についての議論まとめ"
         }
       ],
-      "thumbnailUrl": "/images/ai-purpose-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-purpose-thumbnail.svg"
     },
     {
       "id": "25",
@@ -59,7 +59,7 @@
           "description": "AI技術の倫理的課題と対応策について"
         }
       ],
-      "thumbnailUrl": "/images/cursor-obsidian-thumbnail.jpg"
+      "thumbnailUrl": "/images/cursor-obsidian-thumbnail.svg"
     },
     {
       "id": "24",
@@ -84,7 +84,7 @@
           "description": "音声AIを試すためのサンプルコード"
         }
       ],
-      "thumbnailUrl": "/images/voice-ai-thumbnail.jpg"
+      "thumbnailUrl": "/images/voice-ai-thumbnail.svg"
     },
     {
       "id": "23",
@@ -109,7 +109,7 @@
           "description": "すぐに使えるAirtableテンプレート"
         }
       ],
-      "thumbnailUrl": "/images/airtable-thumbnail.jpg"
+      "thumbnailUrl": "/images/airtable-thumbnail.svg"
     },
     {
       "id": "22",
@@ -127,7 +127,7 @@
           "description": "2024年前半のAI業界の主要な動きまとめ"
         }
       ],
-      "thumbnailUrl": "/images/ai-trends-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-trends-thumbnail.svg"
     },
     {
       "id": "21",
@@ -145,7 +145,7 @@
           "description": "2024年春のAI技術動向と注目ポイント"
         }
       ],
-      "thumbnailUrl": "/images/ai-trends-spring-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-trends-thumbnail.svg"
     },
     {
       "id": "20",
@@ -170,7 +170,7 @@
           "description": "Bolt.newとFigmaで作成したサンプルアプリ"
         }
       ],
-      "thumbnailUrl": "/images/bolt-figma-thumbnail.jpg"
+      "thumbnailUrl": "/images/bolt-figma-thumbnail.svg"
     },
     {
       "id": "19",
@@ -196,7 +196,7 @@
         }
       ],
       "videoUrl": "https://example.com/video/manus-dify-advanced",
-      "thumbnailUrl": "/images/manus-dify-advanced-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "18",
@@ -222,7 +222,7 @@
         }
       ],
       "videoUrl": "https://example.com/video/operator-rapid-dev",
-      "thumbnailUrl": "/images/operator-rapid-dev-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "17",
@@ -247,7 +247,7 @@
           "description": "AI出力の精度向上のためのプロンプト例"
         }
       ],
-      "thumbnailUrl": "/images/hallucination-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "16",
@@ -272,7 +272,7 @@
           "description": "NFT制作に使える無料AIツールまとめ"
         }
       ],
-      "thumbnailUrl": "/images/nft-creation-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "15",
@@ -297,7 +297,7 @@
           "description": "目標の進捗管理用テンプレート"
         }
       ],
-      "thumbnailUrl": "/images/goal-setting-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "14",
@@ -322,7 +322,7 @@
           "description": "来年のAI技術動向予測"
         }
       ],
-      "thumbnailUrl": "/images/year-end-review-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "13",
@@ -340,7 +340,7 @@
           "description": "セッション中に出た話題と発見のまとめ"
         }
       ],
-      "thumbnailUrl": "/images/casual-chat-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "12",
@@ -365,7 +365,7 @@
           "description": "AIパーソナライゼーションの技術的アプローチ"
         }
       ],
-      "thumbnailUrl": "/images/ai-rights-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "11",
@@ -390,7 +390,7 @@
           "description": "業務効率化のためのプロンプト例"
         }
       ],
-      "thumbnailUrl": "/images/practical-usage-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "10",
@@ -415,7 +415,7 @@
           "description": "AI技術のリスク評価手法"
         }
       ],
-      "thumbnailUrl": "/images/ai-ethics-dialogue-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "9",
@@ -440,7 +440,7 @@
           "description": "ベンチマークで使用したテストデータ"
         }
       ],
-      "thumbnailUrl": "/images/ai-benchmark-2-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "8",
@@ -465,7 +465,7 @@
           "description": "ベンチマークテストの実施方法"
         }
       ],
-      "thumbnailUrl": "/images/ai-benchmark-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "7",
@@ -490,7 +490,7 @@
           "description": "AIツールの評価基準とレビュー"
         }
       ],
-      "thumbnailUrl": "/images/new-tools-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "6",
@@ -523,7 +523,7 @@
         }
       ],
       "videoUrl": "https://example.com/video/sunoai-workshop",
-      "thumbnailUrl": "/images/sunoai-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "5",
@@ -541,7 +541,7 @@
           "description": "第5回生成AI会の発表資料"
         }
       ],
-      "thumbnailUrl": "/images/session-vol5-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "4",
@@ -559,7 +559,7 @@
           "description": "第4回生成AI会の発表資料"
         }
       ],
-      "thumbnailUrl": "/images/session-vol4-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "3",
@@ -577,7 +577,7 @@
           "description": "第3回生成AI会の発表資料"
         }
       ],
-      "thumbnailUrl": "/images/session-vol3-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "2",
@@ -595,7 +595,7 @@
           "description": "第2回生成AI会の発表資料"
         }
       ],
-      "thumbnailUrl": "/images/session-vol2-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     },
     {
       "id": "1",
@@ -613,7 +613,7 @@
           "description": "記念すべき第1回生成AI会の発表資料"
         }
       ],
-      "thumbnailUrl": "/images/session-vol1-thumbnail.jpg"
+      "thumbnailUrl": "/images/ai-session-generic.svg"
     }
   ],
   "categories": [

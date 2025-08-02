@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-grad-bolt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#2e0a1a"/>
+    </linearGradient>
+    <linearGradient id="bolt-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff0080"/>
+      <stop offset="100%" style="stop-color:#ffff00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#bg-grad-bolt)"/>
+  
+  <!-- Circuit pattern -->
+  <g opacity="0.1">
+    <path d="M 0 150 L 100 150 L 100 100 L 200 100 L 200 150 L 300 150 L 300 200 L 400 200" 
+          stroke="#ff0080" stroke-width="2" fill="none"/>
+    <path d="M 0 100 L 50 100 L 50 200 L 150 200 L 150 50 L 250 50 L 250 150 L 350 150 L 350 100 L 400 100" 
+          stroke="#ff0080" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Bolt icon -->
+  <g transform="translate(120, 150)">
+    <path d="M 0 -60 L -20 0 L 10 0 L -10 60 L 30 -10 L 0 -10 Z" 
+          fill="url(#bolt-gradient)" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Plus sign -->
+  <g transform="translate(200, 150)" opacity="0.8">
+    <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f5ff" stroke-width="4" filter="url(#glow)"/>
+    <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f5ff" stroke-width="4" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Figma representation -->
+  <g transform="translate(280, 150)">
+    <rect x="-30" y="-50" width="60" height="40" rx="5" fill="none" stroke="#bf00ff" stroke-width="3" filter="url(#glow)"/>
+    <circle cx="0" cy="30" r="20" fill="none" stroke="#00ff41" stroke-width="3" filter="url(#glow)"/>
+    <path d="M -20 -10 L 20 -10" stroke="#00f5ff" stroke-width="2"/>
+    <path d="M -20 0 L 20 0" stroke="#00f5ff" stroke-width="2"/>
+    <path d="M -20 10 L 20 10" stroke="#00f5ff" stroke-width="2"/>
+  </g>
+  
+  <!-- Connection particles -->
+  <g opacity="0.6">
+    <circle cx="160" cy="150" r="2" fill="#00f5ff">
+      <animate attributeName="cx" values="160;240" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="240" cy="150" r="2" fill="#00f5ff">
+      <animate attributeName="cx" values="240;160" dur="2s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="2s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <text x="120" y="40" text-anchor="middle" font-family="monospace" font-size="16" fill="#ff0080" filter="url(#glow)">BOLT.NEW</text>
+  <text x="280" y="40" text-anchor="middle" font-family="monospace" font-size="16" fill="#bf00ff" filter="url(#glow)">FIGMA</text>
+  <text x="200" y="280" text-anchor="middle" font-family="monospace" font-size="14" fill="#00ff41" opacity="0.8">RAPID PROTOTYPING</text>
+</svg>

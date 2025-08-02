@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-grad-image" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a0a2e"/>
+    </linearGradient>
+    <radialGradient id="pixel-gradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff0080"/>
+      <stop offset="50%" style="stop-color:#bf00ff"/>
+      <stop offset="100%" style="stop-color:#00f5ff"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#bg-grad-image)"/>
+  
+  <!-- Pixel grid effect -->
+  <pattern id="pixels" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+    <rect x="1" y="1" width="8" height="8" fill="none" stroke="#00f5ff" stroke-width="0.2" opacity="0.3"/>
+  </pattern>
+  <rect width="400" height="300" fill="url(#pixels)"/>
+  
+  <!-- DALL-E representation (left) -->
+  <g transform="translate(100, 150)">
+    <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="url(#pixel-gradient)" stroke-width="3" filter="url(#glow)"/>
+    <!-- Pixel art effect -->
+    <g opacity="0.7">
+      <rect x="-30" y="-30" width="10" height="10" fill="#ff0080"/>
+      <rect x="-20" y="-30" width="10" height="10" fill="#bf00ff"/>
+      <rect x="-10" y="-30" width="10" height="10" fill="#00f5ff"/>
+      <rect x="0" y="-30" width="10" height="10" fill="#00ff41"/>
+      <rect x="10" y="-30" width="10" height="10" fill="#ff0080"/>
+      <rect x="20" y="-30" width="10" height="10" fill="#bf00ff"/>
+      
+      <rect x="-30" y="-20" width="10" height="10" fill="#bf00ff"/>
+      <rect x="-20" y="-20" width="10" height="10" fill="#00f5ff"/>
+      <rect x="-10" y="-20" width="10" height="10" fill="#00ff41"/>
+      <rect x="0" y="-20" width="10" height="10" fill="#ff0080"/>
+      <rect x="10" y="-20" width="10" height="10" fill="#bf00ff"/>
+      <rect x="20" y="-20" width="10" height="10" fill="#00f5ff"/>
+      
+      <rect x="-30" y="-10" width="10" height="10" fill="#00f5ff"/>
+      <rect x="-20" y="-10" width="10" height="10" fill="#00ff41"/>
+      <rect x="-10" y="-10" width="10" height="10" fill="#ff0080"/>
+      <rect x="0" y="-10" width="10" height="10" fill="#bf00ff"/>
+      <rect x="10" y="-10" width="10" height="10" fill="#00f5ff"/>
+      <rect x="20" y="-10" width="10" height="10" fill="#00ff41"/>
+    </g>
+  </g>
+  
+  <!-- VS indicator -->
+  <text x="200" y="150" text-anchor="middle" font-family="monospace" font-size="24" fill="#00f5ff" filter="url(#glow)">VS</text>
+  
+  <!-- Midjourney representation (right) -->
+  <g transform="translate(300, 150)">
+    <circle r="40" fill="none" stroke="url(#pixel-gradient)" stroke-width="3" filter="url(#glow)"/>
+    <!-- Swirl effect -->
+    <path d="M 0 0 Q -20 -20, -20 0 T 0 20 T 20 0 T 0 -20" 
+          fill="none" stroke="#bf00ff" stroke-width="2" opacity="0.8" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 0 0 Q 15 -15, 15 0 T 0 15 T -15 0 T 0 -15" 
+          fill="none" stroke="#ff0080" stroke-width="2" opacity="0.6" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <text x="100" y="40" text-anchor="middle" font-family="monospace" font-size="14" fill="#ff0080" filter="url(#glow)">DALL-E 3</text>
+  <text x="300" y="40" text-anchor="middle" font-family="monospace" font-size="14" fill="#bf00ff" filter="url(#glow)">MIDJOURNEY</text>
+  <text x="200" y="280" text-anchor="middle" font-family="monospace" font-size="16" fill="#00ff41" opacity="0.8">IMAGE GENERATION</text>
+</svg>

@@ -139,7 +139,17 @@ interface Category {
 
 ## 🚀 デプロイ
 
-### Vercel（推奨）
+### GitHub Pages（現在使用中）
+1. GitHubリポジトリにプッシュ
+2. GitHub Actionsが自動的にビルド・デプロイを実行
+3. `https://[username].github.io/henkaku-ai-archive` でアクセス可能
+
+設定手順：
+1. リポジトリの Settings > Pages
+2. Source を "GitHub Actions" に設定
+3. mainブランチにプッシュすると自動デプロイ
+
+### Vercel
 1. GitHubリポジトリにプッシュ
 2. Vercelでプロジェクトをインポート
 3. 自動デプロイ設定
