@@ -152,19 +152,39 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
         
         {/* VIEWボタンを条件付きで表示（第28回、またはpodcastUrlがある場合のみ） */}
         {(session.id === '28' || session.podcastUrl) && (
-          <Link
-            href={`/sessions/${session.id}`}
-            className="group/button relative btn-cyber-primary text-sm flex items-center overflow-hidden"
-          >
-            <span className="relative z-10 flex items-center">
-              VIEW
-              <ExternalLink className="h-4 w-4 ml-2 group-hover/button:scale-110 transition-transform duration-300" />
-            </span>
-            
-            {/* ボタンの光る効果 */}
-            <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 
-                            group-hover/button:opacity-20 transition-opacity duration-300 blur-sm"></div>
-          </Link>
+          session.podcastUrl ? (
+            // podcastUrlがある場合は外部リンクとして開く
+            <a
+              href={session.podcastUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/button relative btn-cyber-primary text-sm flex items-center overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center">
+                VIEW
+                <ExternalLink className="h-4 w-4 ml-2 group-hover/button:scale-110 transition-transform duration-300" />
+              </span>
+              
+              {/* ボタンの光る効果 */}
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 
+                              group-hover/button:opacity-20 transition-opacity duration-300 blur-sm"></div>
+            </a>
+          ) : (
+            // podcastUrlがない場合は通常のセッション詳細ページへ
+            <Link
+              href={`/sessions/${session.id}`}
+              className="group/button relative btn-cyber-primary text-sm flex items-center overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center">
+                VIEW
+                <ExternalLink className="h-4 w-4 ml-2 group-hover/button:scale-110 transition-transform duration-300" />
+              </span>
+              
+              {/* ボタンの光る効果 */}
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 
+                              group-hover/button:opacity-20 transition-opacity duration-300 blur-sm"></div>
+            </Link>
+          )
         )}
       </div>
       
