@@ -7,18 +7,30 @@ import StudySessionCard from '@/components/StudySessionCard';
 import { StudySession } from '@/types';
 import { loadAllSessions, getCategories } from '@/utils/dataLoader';
 import { getImagePath } from '@/utils/config';
+import { useAirtableSessions } from '@/hooks/useAirtableData';
 
 export default function Home() {
   const [recentSessions, setRecentSessions] = useState<StudySession[]>([]);
   const [searchResults, setSearchResults] = useState<StudySession[] | null>(null);
-
   const [allSessions, setAllSessions] = useState<StudySession[]>([]);
+  
+  // Airtableからデータを取得
+  const { sessions: airtableSessions, loading: airtableLoading, error: airtableError } = useAirtableSessions();
 
   useEffect(() => {
-    // セッションデータを読み込み
+    // Airtableデータが利用可能な場合は使用、そうでない場合はフォールバック
     const fetchSessions = async () => {
       try {
-        const sessions = await loadAllSessions();
+        let sessions: StudySession[];
+        
+        if (airtableSessions && airtableSessions.length > 0) {
+          // Airtableデータを使用
+          sessions = airtableSessions as StudySession[];
+        } else {
+          // フォールバック: 静的データを使用
+          sessions = await loadAllSessions();
+        }
+        
         setAllSessions(sessions);
         // 最新の4件を取得
         setRecentSessions(sessions.slice(0, 4));
@@ -27,8 +39,10 @@ export default function Home() {
       }
     };
     
-    fetchSessions();
-  }, []);
+    if (!airtableLoading) {
+      fetchSessions();
+    }
+  }, [airtableSessions, airtableLoading]);
 
   const handleSearch = (query: string) => {
     if (!query.trim()) {
@@ -201,11 +215,29 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  {recentSessions.map((session) => (
-                    <StudySessionCard key={session.id} session={session} />
-                  ))}
-                </div>
+                {airtableLoading ? (
+                  <div className="flex justify-center items-center py-16">
+                    <div className="text-center">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-blue mx-auto mb-4"></div>
+                      <p className="text-cyan-300">データを読み込んでいます...</p>
+                    </div>
+                  </div>
+                ) : airtableError ? (
+                  <div className="text-center py-8">
+                    <p className="text-yellow-400 mb-4">データの読み込みに失敗しました。フォールバックデータを使用しています。</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      {recentSessions.map((session) => (
+                        <StudySessionCard key={session.id} session={session} />
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    {recentSessions.map((session) => (
+                      <StudySessionCard key={session.id} session={session} />
+                    ))}
+                  </div>
+                )}
 
                 <div className="text-center">
                   <Link href="/sessions" className="inline-flex items-center btn-cyber-primary text-lg px-8 py-4 group">

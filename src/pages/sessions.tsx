@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Filter, SortAsc, SortDesc, Search, Zap, Calendar, Heart } from 'lucide-react';
+import { Filter, SortAsc, SortDesc, Search, Zap, Calendar, Heart, ChevronDown, ChevronUp } from 'lucide-react';
 import Layout from '@/components/Layout';
 import StudySessionCard from '@/components/StudySessionCard';
 import SessionSkeleton from '@/components/SessionSkeleton';
@@ -10,6 +10,7 @@ import Pagination from '@/components/Pagination';
 import { StudySession } from '@/types';
 import { loadAllSessions, getCategories } from '@/utils/dataLoader';
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useAirtableSessions } from '@/hooks/useAirtableData';
 
 type SortOption = 'date-desc' | 'date-asc' | 'title-asc' | 'title-desc';
 
@@ -28,14 +29,27 @@ export default function Sessions() {
   const [isLoading, setIsLoading] = useState(true);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAllTags, setShowAllTags] = useState(false);
   const itemsPerPage = 9;
+  
+  // Airtableからデータを取得
+  const { sessions: airtableSessions, loading: airtableLoading, error: airtableError } = useAirtableSessions();
 
   useEffect(() => {
     // データ読み込み
     const fetchSessions = async () => {
       setIsLoading(true);
       try {
-        const loadedSessions = await loadAllSessions();
+        let loadedSessions: StudySession[];
+        
+        if (airtableSessions && airtableSessions.length > 0) {
+          // Airtableデータを使用
+          loadedSessions = airtableSessions as StudySession[];
+        } else {
+          // フォールバック: 静的データを使用
+          loadedSessions = await loadAllSessions();
+        }
+        
         setSessions(loadedSessions);
         setFilteredSessions(loadedSessions);
         
@@ -50,8 +64,10 @@ export default function Sessions() {
       }
     };
     
-    fetchSessions();
-  }, [category]);
+    if (!airtableLoading) {
+      fetchSessions();
+    }
+  }, [category, airtableSessions, airtableLoading]);
 
   useEffect(() => {
     let filtered = sessions;
@@ -235,7 +251,7 @@ export default function Sessions() {
             <div className="flex flex-col lg:flex-row gap-8">
               {/* サイドバー（フィルター） */}
               <div className="lg:w-80">
-                <div className="card-cyber p-6 sticky top-4">
+                <div className="card-cyber p-6 lg:sticky lg:top-24 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
                   <h3 className="text-xl font-cyber font-bold text-neon-purple mb-6 flex items-center">
                     <Filter className="h-6 w-6 mr-3" />
                     NEURAL FILTERS
@@ -332,8 +348,8 @@ export default function Sessions() {
                     <label className="block text-sm font-cyber font-medium text-cyber-300 mb-3 tracking-wider">
                       TAG MATRIX
                     </label>
-                    <div className="space-y-3 max-h-64 overflow-y-auto custom-scrollbar">
-                      {allTags.map((tag, index) => (
+                    <div className="space-y-3">
+                      {(showAllTags ? allTags : allTags.slice(0, 5)).map((tag, index) => (
                         <label key={tag} className="flex items-center group cursor-pointer">
                           <input
                             type="checkbox"
@@ -351,6 +367,24 @@ export default function Sessions() {
                         </label>
                       ))}
                     </div>
+                    {allTags.length > 5 && (
+                      <button
+                        onClick={() => setShowAllTags(!showAllTags)}
+                        className="mt-3 flex items-center text-xs text-cyan-400 hover:text-neon-blue font-cyber transition-colors duration-300"
+                      >
+                        {showAllTags ? (
+                          <>
+                            <ChevronUp className="h-3 w-3 mr-1" />
+                            折りたたむ
+                          </>
+                        ) : (
+                          <>
+                            <ChevronDown className="h-3 w-3 mr-1" />
+                            他{allTags.length - 5}個のタグを表示
+                          </>
+                        )}
+                      </button>
+                    )}
                   </div>
 
                   {/* 選択中のタグ */}

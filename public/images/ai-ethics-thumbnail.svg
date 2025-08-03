@@ -1,0 +1,63 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#f8f9fa"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e9ecef" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)"/>
+  
+  <!-- Central Balance Scale -->
+  <g transform="translate(400, 225)">
+    <!-- Scale Base -->
+    <rect x="-30" y="80" width="60" height="10" fill="#495057" rx="2"/>
+    <rect x="-5" y="40" width="10" height="45" fill="#495057"/>
+    
+    <!-- Scale Beam -->
+    <rect x="-150" y="35" width="300" height="8" fill="#495057" rx="4"/>
+    
+    <!-- Left Pan -->
+    <g transform="translate(-120, 0)">
+      <path d="M -30 40 L -20 70 L 20 70 L 30 40" stroke="#495057" stroke-width="3" fill="none"/>
+      <rect x="-25" y="70" width="50" height="3" fill="#495057" rx="1"/>
+      <!-- AI Symbol -->
+      <text x="0" y="85" text-anchor="middle" font-family="monospace" font-size="24" font-weight="bold" fill="#007bff">AI</text>
+    </g>
+    
+    <!-- Right Pan -->
+    <g transform="translate(120, 0)">
+      <path d="M -30 40 L -20 70 L 20 70 L 30 40" stroke="#495057" stroke-width="3" fill="none"/>
+      <rect x="-25" y="70" width="50" height="3" fill="#495057" rx="1"/>
+      <!-- Ethics Symbol (Heart) -->
+      <path d="M 0 75 C -10 65, -20 65, -20 75 C -20 85, -10 95, 0 105 C 10 95, 20 85, 20 75 C 20 65, 10 65, 0 75 Z" fill="#dc3545"/>
+    </g>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <!-- Binary Code -->
+  <text x="50" y="80" font-family="monospace" font-size="14" fill="#dee2e6">01001000 01110101 01101101 01100001 01101110</text>
+  <text x="500" y="400" font-family="monospace" font-size="14" fill="#dee2e6">01000101 01110100 01101000 01101001 01100011 01110011</text>
+  
+  <!-- Circuit Lines -->
+  <g stroke="#e9ecef" stroke-width="2" fill="none">
+    <path d="M 100 150 L 150 150 L 150 200"/>
+    <circle cx="150" cy="200" r="3" fill="#e9ecef"/>
+    <path d="M 650 250 L 700 250 L 700 300"/>
+    <circle cx="700" cy="300" r="3" fill="#e9ecef"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#212529">AI Ethics & Responsibility</text>
+  
+  <!-- Subtle Glow Effect -->
+  <defs>
+    <radialGradient id="glow">
+      <stop offset="0%" stop-color="#007bff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#007bff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="400" cy="225" r="180" fill="url(#glow)"/>
+</svg>
