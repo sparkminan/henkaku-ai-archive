@@ -30,6 +30,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fetch Airtable data
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          AIRTABLE_SESSIONS_TABLE_NAME: Sessions
+        run: |
+          if [ -n "$AIRTABLE_API_KEY" ] && [ -n "$AIRTABLE_BASE_ID" ]; then
+            echo "Fetching data from Airtable..."
+            node scripts/fetch-airtable-data.js || echo "Failed to fetch Airtable data, using static data"
+          else
+            echo "Airtable credentials not configured, using static data"
+          fi
+
       - name: Build
         run: npm run build
 

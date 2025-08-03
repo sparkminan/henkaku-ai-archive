@@ -31,3 +31,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# airtable data
+/src/data/airtable-sessions.json
+/src/data/.use-airtable

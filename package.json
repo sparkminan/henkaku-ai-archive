@@ -9,13 +9,15 @@
     "lint": "next lint",
     "add-session": "node scripts/add-session.js",
     "split-sessions": "node scripts/split-sessions.js",
-    "export-csv": "node scripts/export-sessions-csv.js"
+    "export-csv": "node scripts/export-sessions-csv.js",
+    "fetch-airtable": "node scripts/fetch-airtable-data.js"
   },
   "dependencies": {
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "airtable": "^0.12.2",
+    "dotenv": "^17.2.1",
     "lucide-react": "^0.263.1",
     "next": "^14.0.0",
     "react": "^18.2.0",
