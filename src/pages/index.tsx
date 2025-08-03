@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import { Calendar, Users, BookOpen, TrendingUp, Brain, Zap, CircuitBoard, Cpu } from 'lucide-react';
 import Layout from '@/components/Layout';
 import StudySessionCard from '@/components/StudySessionCard';
+import SEOHead from '@/components/SEOHead';
+import StructuredData from '@/components/StructuredData';
 import { StudySession } from '@/types';
 import { getCategories } from '@/utils/dataLoader';
 import { getImagePath } from '@/utils/config';
@@ -39,10 +40,11 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>HENKAKU AI LAB - 生成AI勉強会アーカイブ</title>
-        <meta name="description" content="HENKAKUコミュニティにおける有志の勉強会「生成AI会」のアーカイブ。最新のAI技術を楽しく議論しながら学び、実験して日々の生活に役立てるプラットフォーム。" />
-      </Head>
+      <SEOHead
+        description="HENKAKUコミュニティの生成AI勉強会アーカイブ。ChatGPT、Claude、Stable Diffusionなど最新のAI技術を楽しく議論しながら学び、実験して日々の生活に役立てるプラットフォーム。28回以上の勉強会資料を無料公開中。"
+        keywords={['ChatGPT', 'Claude', 'Stable Diffusion', 'プロンプトエンジニアリング', 'AI活用']}
+      />
+      <StructuredData type="WebSite" data={{}} />
 
       <Layout onSearch={handleSearch}>
         {!searchResults ? (

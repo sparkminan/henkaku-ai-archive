@@ -10,7 +10,8 @@
     "add-session": "node scripts/add-session.js",
     "split-sessions": "node scripts/split-sessions.js",
     "export-csv": "node scripts/export-sessions-csv.js",
-    "fetch-airtable": "node scripts/fetch-airtable-data.js"
+    "fetch-airtable": "node scripts/fetch-airtable-data.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@types/node": "^20.0.0",

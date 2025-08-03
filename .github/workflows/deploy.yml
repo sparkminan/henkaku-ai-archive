@@ -48,6 +48,9 @@ jobs:
           fi
           echo "=== End of Airtable Data Fetch ==="
 
+      - name: Generate sitemap
+        run: npm run generate-sitemap
+
       - name: Build
         run: npm run build
 

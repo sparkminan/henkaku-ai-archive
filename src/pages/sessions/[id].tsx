@@ -1,9 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Calendar, User, FileText, Play, Download, ExternalLink, ArrowLeft, Headphones } from 'lucide-react';
 import Layout from '@/components/Layout';
+import SEOHead from '@/components/SEOHead';
+import StructuredData from '@/components/StructuredData';
 import { StudySession } from '@/types';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import sessionIndex from '@/data/sessions/index.json';
@@ -72,10 +73,27 @@ export default function SessionDetail({ session, relatedSessions = [] }: Session
 
   return (
     <>
-      <Head>
-        <title>{session.title} - HENKAKU 生成AI会 アーカイブ</title>
-        <meta name="description" content={session.description} />
-      </Head>
+      <SEOHead
+        title={session.title}
+        description={session.description}
+        keywords={session.tags}
+        type="article"
+        publishedTime={new Date(session.date).toISOString()}
+        author={session.presenter}
+        image={session.thumbnailUrl}
+      />
+      <StructuredData
+        type="Article"
+        data={{
+          title: session.title,
+          description: session.description,
+          author: session.presenter,
+          datePublished: new Date(session.date).toISOString(),
+          image: session.thumbnailUrl,
+          url: `https://sparkminan.github.io/henkaku-ai-archive/sessions/${session.id}`,
+          keywords: session.tags,
+        }}
+      />
 
       <Layout>
         <div className="bg-gray-50 min-h-screen">

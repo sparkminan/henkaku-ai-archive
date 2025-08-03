@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sparkminan.github.io/henkaku-ai-archive/sitemap.xml

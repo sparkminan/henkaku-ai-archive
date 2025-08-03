@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Filter, SortAsc, SortDesc, Search, Zap, Calendar, Heart, ChevronDown, ChevronUp } from 'lucide-react';
 import Layout from '@/components/Layout';
@@ -7,6 +6,7 @@ import StudySessionCard from '@/components/StudySessionCard';
 import SessionSkeleton from '@/components/SessionSkeleton';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Pagination from '@/components/Pagination';
+import SEOHead from '@/components/SEOHead';
 import { StudySession } from '@/types';
 import { loadAllSessions, getCategories } from '@/utils/dataLoader';
 import { useFavorites } from '@/contexts/FavoritesContext';
@@ -195,10 +195,11 @@ export default function Sessions() {
 
   return (
     <>
-      <Head>
-        <title>セッション一覧 - HENKAKU AI LAB</title>
-        <meta name="description" content="HENKAKU生成AI会で開催された全セッションを探索。最新のAI技術セッションを検索・フィルターして学習できます。" />
-      </Head>
+      <SEOHead
+        title="セッション一覧"
+        description="HENKAKU生成AI会で開催された全28回以上のセッションアーカイブ。Claude、ChatGPT、Stable Diffusion、Web3×AI融合など最新のAI技術を体系的に学習できます。"
+        keywords={['AI勉強会一覧', 'セッションアーカイブ', 'AI学習教材', 'オンライン勉強会']}
+      />
 
       <Layout onSearch={handleSearch}>
         <div className="bg-dark-900 min-h-screen relative overflow-hidden">
