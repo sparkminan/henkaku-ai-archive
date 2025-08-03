@@ -55,7 +55,19 @@ export async function fetchSessionsFromAirtable(): Promise<StudySession[]> {
         throw new Error(`GAS API Error: ${result.error}`);
       }
       
-      const sessions = result.data;
+      // GAS APIのデータをStudySession型に変換
+      const sessions: StudySession[] = result.data.map((session: any) => ({
+        id: session.id.toString(),
+        title: session.title,
+        date: session.date,
+        presenter: session.presenter,
+        description: session.description,
+        tags: session.tags || [],
+        materials: [], // materialsは現在使用していないため空配列
+        videoUrl: session.videoUrl,
+        thumbnailUrl: session.thumbnailUrl,
+        podcastUrl: session.podcastUrl,
+      }));
       
       // キャッシュに保存（3分間）
       cache.set(CACHE_KEYS.SESSIONS, sessions, 3);
