@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Session } from '../types';
+import { StudySession } from '../types';
 
 export function useAirtableSessions() {
-  const [sessions, setSessions] = useState<Session[]>([]);
+  const [sessions, setSessions] = useState<StudySession[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +33,7 @@ export function useAirtableSessions() {
 }
 
 export function useAirtableSession(id: string) {
-  const [session, setSession] = useState<Session | null>(null);
+  const [session, setSession] = useState<StudySession | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

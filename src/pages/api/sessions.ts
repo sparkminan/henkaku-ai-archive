@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { fetchSessions } from '../../lib/airtable';
-import { sessionsData } from '../../data/sessions';
+import { sessionsData } from '../../data/sessionsData';
 
 export default async function handler(
   req: NextApiRequest,

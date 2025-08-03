@@ -61,7 +61,7 @@ export async function fetchSessions() {
       })
       .all();
 
-    return records.map(airtableToSession);
+    return records.map(record => airtableToSession(record as unknown as AirtableSession));
   } catch (error) {
     console.error('Error fetching sessions from Airtable:', error);
     return null;
@@ -84,7 +84,7 @@ export async function fetchSessionById(sessionId: string) {
       .firstPage();
 
     if (records.length > 0) {
-      return airtableToSession(records[0] as AirtableSession);
+      return airtableToSession(records[0] as unknown as AirtableSession);
     }
     return null;
   } catch (error) {
