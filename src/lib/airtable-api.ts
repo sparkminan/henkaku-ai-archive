@@ -34,7 +34,7 @@ export async function fetchSessionsFromAirtable(): Promise<StudySession[]> {
   const gasApiUrl = process.env.NEXT_PUBLIC_GAS_API_URL;
   
   // GAS APIが設定されている場合はリアルタイム取得を試行
-  if (gasApiUrl && typeof window !== 'undefined') {
+  if (gasApiUrl) {
     try {
       console.log('🚀 Fetching live data from GAS API...');
       
