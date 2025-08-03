@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StudySession } from '../types';
+import { fetchSessionsFromAirtable } from '../lib/airtable-api';
 
 export function useAirtableSessions() {
   const [sessions, setSessions] = useState<StudySession[]>([]);
@@ -10,21 +11,10 @@ export function useAirtableSessions() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        // GitHub Pages環境では静的JSONファイルを直接読み込む
-        const response = await fetch('/henkaku-ai-archive/data/airtable-sessions.json');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch sessions');
-        }
-        
-        const data = await response.json();
-        // データの形式を整形（idを文字列に変換）
-        const formattedSessions = data.map((session: any) => ({
-          ...session,
-          id: session.id.toString(),
-          materials: session.materials || []
-        }));
-        setSessions(formattedSessions);
+        console.log('Fetching sessions from Airtable API...');
+        const sessionsData = await fetchSessionsFromAirtable();
+        setSessions(sessionsData);
+        console.log(`Successfully loaded ${sessionsData.length} sessions`);
       } catch (err) {
         console.error('Error fetching sessions:', err);
         setError(err instanceof Error ? err.message : 'Failed to fetch sessions');
@@ -48,25 +38,11 @@ export function useAirtableSession(id: string) {
     const fetchData = async () => {
       try {
         setLoading(true);
-        // GitHub Pages環境では静的JSONファイルを直接読み込む
-        const response = await fetch('/henkaku-ai-archive/data/airtable-sessions.json');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch sessions');
-        }
-        
-        const data = await response.json();
-        // idに一致するセッションを検索
-        const foundSession = data.find((s: any) => s.id.toString() === id);
-        if (foundSession) {
-          setSession({
-            ...foundSession,
-            id: foundSession.id.toString(),
-            materials: foundSession.materials || []
-          });
-        } else {
-          setSession(null);
-        }
+        console.log(`Fetching session ${id} from Airtable API...`);
+        const sessionsData = await fetchSessionsFromAirtable();
+        const foundSession = sessionsData.find(s => s.id === id);
+        setSession(foundSession || null);
+        console.log(`Session ${id}:`, foundSession ? 'found' : 'not found');
       } catch (err) {
         console.error('Error fetching session:', err);
         setError(err instanceof Error ? err.message : 'Failed to fetch session');
