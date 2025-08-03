@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
 import { DataProvider } from '@/contexts/DataContext';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,13 +15,15 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider>
-        <DataProvider>
-          <FavoritesProvider>
-            <Component {...pageProps} />
-          </FavoritesProvider>
-        </DataProvider>
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <DataProvider>
+            <FavoritesProvider>
+              <Component {...pageProps} />
+            </FavoritesProvider>
+          </DataProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
     </>
   );
 }

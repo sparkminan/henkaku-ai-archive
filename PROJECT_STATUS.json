@@ -1,0 +1,113 @@
+{
+  "project_id": "henkaku-ai-archive",
+  "project_name": "HENKAKU AI Archive",
+  "last_updated": "2025-08-03T10:00:00Z",
+  "overall_progress": 65,
+  "phase": "development",
+  "health": "on-track",
+  "summary": {
+    "total_tasks": 28,
+    "completed_tasks": 18,
+    "in_progress_tasks": 3,
+    "blocked_tasks": 1,
+    "backlog_tasks": 6
+  },
+  "milestones": [
+    {
+      "id": "M1",
+      "name": "基本機能実装",
+      "due_date": "2025-07-31",
+      "progress": 100,
+      "status": "completed",
+      "tasks": ["TASK-001", "TASK-002", "TASK-003", "TASK-004", "TASK-005"]
+    },
+    {
+      "id": "M2",
+      "name": "Airtable統合",
+      "due_date": "2025-08-15",
+      "progress": 70,
+      "status": "in-progress",
+      "tasks": ["TASK-006", "TASK-007", "TASK-008", "TASK-009"]
+    },
+    {
+      "id": "M3",
+      "name": "検索機能強化",
+      "due_date": "2025-08-31",
+      "progress": 30,
+      "status": "in-progress",
+      "tasks": ["TASK-010", "TASK-011", "TASK-012"]
+    },
+    {
+      "id": "M4",
+      "name": "パフォーマンス最適化",
+      "due_date": "2025-09-15",
+      "progress": 0,
+      "status": "not-started",
+      "tasks": []
+    }
+  ],
+  "current_sprint": {
+    "number": 5,
+    "start_date": "2025-07-29",
+    "end_date": "2025-08-12",
+    "goal": "Airtable統合の完成と検索機能の基本実装",
+    "capacity": 30,
+    "committed": 25,
+    "completed": 15
+  },
+  "risks": [
+    {
+      "id": "RISK-001",
+      "description": "Airtable APIのレート制限",
+      "severity": "medium",
+      "probability": "high",
+      "mitigation": "キャッシュ機能の実装とバッチ処理",
+      "status": "mitigating",
+      "owner": "backend-team"
+    },
+    {
+      "id": "RISK-002",
+      "description": "大量データでのパフォーマンス低下",
+      "severity": "high",
+      "probability": "medium",
+      "mitigation": "静的サイト生成とCDN活用",
+      "status": "identified",
+      "owner": "frontend-team"
+    }
+  ],
+  "team_metrics": {
+    "velocity": {
+      "current": 25,
+      "average": 22,
+      "trend": "increasing"
+    },
+    "quality": {
+      "code_coverage": 78,
+      "bug_rate": 0.05,
+      "technical_debt": 120
+    }
+  },
+  "content_metrics": {
+    "total_sessions": 28,
+    "published_sessions": 28,
+    "draft_sessions": 0,
+    "total_materials": 42,
+    "categories": 6,
+    "tags": 35
+  },
+  "dependencies": {
+    "external": [
+      {
+        "name": "Airtable API",
+        "status": "partially-integrated",
+        "notes": "データ取得は実装済み、更新機能は未実装"
+      },
+      {
+        "name": "GitHub Pages",
+        "status": "configured",
+        "notes": "自動デプロイ設定済み"
+      }
+    ],
+    "internal": []
+  }
+}
