@@ -10,14 +10,21 @@ export function useAirtableSessions() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/sessions');
+        // GitHub Pages環境では静的JSONファイルを直接読み込む
+        const response = await fetch('/henkaku-ai-archive/data/airtable-sessions.json');
         
         if (!response.ok) {
           throw new Error('Failed to fetch sessions');
         }
         
         const data = await response.json();
-        setSessions(data);
+        // データの形式を整形（idを文字列に変換）
+        const formattedSessions = data.map((session: any) => ({
+          ...session,
+          id: session.id.toString(),
+          materials: session.materials || []
+        }));
+        setSessions(formattedSessions);
       } catch (err) {
         console.error('Error fetching sessions:', err);
         setError(err instanceof Error ? err.message : 'Failed to fetch sessions');
@@ -41,14 +48,25 @@ export function useAirtableSession(id: string) {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/sessions/${id}`);
+        // GitHub Pages環境では静的JSONファイルを直接読み込む
+        const response = await fetch('/henkaku-ai-archive/data/airtable-sessions.json');
         
         if (!response.ok) {
-          throw new Error('Failed to fetch session');
+          throw new Error('Failed to fetch sessions');
         }
         
         const data = await response.json();
-        setSession(data);
+        // idに一致するセッションを検索
+        const foundSession = data.find((s: any) => s.id.toString() === id);
+        if (foundSession) {
+          setSession({
+            ...foundSession,
+            id: foundSession.id.toString(),
+            materials: foundSession.materials || []
+          });
+        } else {
+          setSession(null);
+        }
       } catch (err) {
         console.error('Error fetching session:', err);
         setError(err instanceof Error ? err.message : 'Failed to fetch session');
