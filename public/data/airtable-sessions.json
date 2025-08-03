@@ -1,5 +1,17 @@
 [
   {
+    "id": 29,
+    "title": "テストです",
+    "date": "2025-08-03T21:56:00.000Z",
+    "presenter": "spark／minta",
+    "description": "テスト",
+    "tags": [
+      "aiエージェント"
+    ],
+    "thumbnailUrl": "https://sparkminan.github.io/henkaku-ai-archive/images/ai-session-generic.svg",
+    "materials": []
+  },
+  {
     "id": 28,
     "title": "第28回：生成AI会 - AI利用実態とWeb3との融合の可能性",
     "date": "2025-08-02T00:00:00.000Z",
