@@ -36,12 +36,17 @@ jobs:
           AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
           AIRTABLE_SESSIONS_TABLE_NAME: Sessions
         run: |
+          echo "=== Airtable Data Fetch Step ==="
+          echo "Checking for Airtable credentials..."
           if [ -n "$AIRTABLE_API_KEY" ] && [ -n "$AIRTABLE_BASE_ID" ]; then
+            echo "✓ Airtable credentials found"
             echo "Fetching data from Airtable..."
-            node scripts/fetch-airtable-data.js || echo "Failed to fetch Airtable data, using static data"
+            node scripts/fetch-airtable-data.js && echo "✓ Successfully fetched Airtable data" || echo "⚠ Failed to fetch Airtable data, using static data"
           else
-            echo "Airtable credentials not configured, using static data"
+            echo "⚠ Airtable credentials not configured in GitHub Secrets"
+            echo "Using static data for build"
           fi
+          echo "=== End of Airtable Data Fetch ==="
 
       - name: Build
         run: npm run build

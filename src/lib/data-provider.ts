@@ -10,6 +10,15 @@ export interface DataProvider {
 
 class AirtableDataProvider implements DataProvider {
   async fetchAllSessions(): Promise<StudySession[]> {
+    // In production, always try to use the fetched Airtable data first
+    if (process.env.NODE_ENV === 'production') {
+      const staticSessions = await this.fetchStaticSessions();
+      if (staticSessions.length > 0) {
+        return staticSessions;
+      }
+    }
+    
+    // In development, try to fetch from Airtable API
     const sessions = await fetchAirtableSessions();
     if (!sessions) {
       // Fall back to static data
@@ -70,10 +79,8 @@ class StaticDataProvider implements DataProvider {
 
 // Factory function to create the appropriate data provider
 export function createDataProvider(): DataProvider {
-  if (process.env.NEXT_PUBLIC_USE_AIRTABLE === 'true' || process.env.AIRTABLE_API_KEY) {
-    return new AirtableDataProvider();
-  }
-  return new StaticDataProvider();
+  // Always use AirtableDataProvider which has fallback logic
+  return new AirtableDataProvider();
 }
 
 // Singleton instance

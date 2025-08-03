@@ -5,17 +5,23 @@ const path = require('path');
 require('dotenv').config({ path: '.env.local' });
 
 async function fetchAndSaveAirtableData() {
-  console.log('Fetching data from Airtable...');
+  console.log('=== Airtable Data Fetch Script ===');
+  console.log('Environment:', process.env.NODE_ENV || 'development');
+  console.log('API Key present:', !!process.env.AIRTABLE_API_KEY);
+  console.log('Base ID present:', !!process.env.AIRTABLE_BASE_ID);
+  console.log('Table name:', process.env.AIRTABLE_SESSIONS_TABLE_NAME || 'Sessions');
   
   // 環境変数の確認
   if (!process.env.AIRTABLE_API_KEY || process.env.AIRTABLE_API_KEY === 'your_api_key_here') {
-    console.warn('AIRTABLE_API_KEY is not set. Using static data.');
-    return;
+    console.error('ERROR: AIRTABLE_API_KEY is not set or invalid.');
+    console.log('Please set AIRTABLE_API_KEY in GitHub Secrets or .env.local');
+    process.exit(1);
   }
   
   if (!process.env.AIRTABLE_BASE_ID || process.env.AIRTABLE_BASE_ID === 'your_base_id_here') {
-    console.warn('AIRTABLE_BASE_ID is not set. Using static data.');
-    return;
+    console.error('ERROR: AIRTABLE_BASE_ID is not set or invalid.');
+    console.log('Please set AIRTABLE_BASE_ID in GitHub Secrets or .env.local');
+    process.exit(1);
   }
 
   try {

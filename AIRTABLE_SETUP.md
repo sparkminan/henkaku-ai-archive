@@ -1,61 +1,57 @@
-# Airtable Setup Guide
+# Airtable セットアップガイド
 
-## データのアップロード
+このプロジェクトでAirtableをデータソースとして使用するための設定方法です。
 
-1. Airtableにログイン
-2. 新しいBaseを作成または既存のBaseを選択
-3. `airtable_sessions_optimized.csv` をインポート
-4. テーブル名を `Sessions` に設定
+## GitHub Secretsの設定（重要）
 
-## 必要な情報の取得方法
+GitHub ActionsでAirtableからデータを取得するには、以下のSecretを設定する必要があります：
 
-### 1. API Key の取得
-1. [Airtable Account](https://airtable.com/account) にアクセス
-2. 「API」セクションを探す
-3. 「Personal access tokens」をクリック
-4. 新しいトークンを作成（必要なスコープ: `data.records:read`）
+1. GitHubリポジトリの **Settings** → **Secrets and variables** → **Actions** にアクセス
 
-### 2. Base ID の取得
-1. Airtableでデータベースを開く
-2. URLを確認: `https://airtable.com/appXXXXXXXXXXXXXX/tblYYYYYYYYYYYYYY`
+2. **New repository secret** をクリックして以下を追加：
+   - `AIRTABLE_API_KEY`: AirtableのPersonal Access Token
+   - `AIRTABLE_BASE_ID`: AirtableのBase ID（例：appXXXXXXXXXXXXXX）
+
+## Airtable Personal Access Tokenの取得方法
+
+1. https://airtable.com/create/tokens にアクセス
+2. **Create new token** をクリック
+3. 以下の設定を行う：
+   - **Name**: 任意の名前（例：henkaku-ai-archive）
+   - **Scopes**: 
+     - `data.records:read` を選択
+   - **Access**: 
+     - 対象のBaseを選択
+4. **Create token** をクリックしてトークンをコピー
+
+## Base IDの確認方法
+
+1. Airtableで対象のBaseを開く
+2. URLを確認：`https://airtable.com/appXXXXXXXXXXXXXX/...`
 3. `appXXXXXXXXXXXXXX` の部分がBase ID
 
-### 3. .env.local の設定
-`.env.local` ファイルに以下の情報を設定してください：
+## ローカル開発環境
 
-```env
-AIRTABLE_API_KEY=patXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-AIRTABLE_BASE_ID=appXXXXXXXXXXXXXX
+`.env.local`ファイルに以下を設定：
+
+```
+AIRTABLE_API_KEY=your_personal_access_token
+AIRTABLE_BASE_ID=your_base_id
 AIRTABLE_SESSIONS_TABLE_NAME=Sessions
 ```
 
-## テスト方法
+## トラブルシューティング
 
-1. 開発サーバーを起動:
-   ```bash
-   npm run dev
-   ```
+### GitHub Actionsでデータが取得できない場合
 
-2. ブラウザで以下のURLにアクセス:
-   ```
-   http://localhost:3000/api/test-airtable
-   ```
+1. GitHub Actionsのログを確認
+2. Secretsが正しく設定されているか確認
+3. Personal Access Tokenのスコープと権限を確認
 
-3. 接続が成功すると、セッション数が表示されます
+### ローカルでデータが取得できない場合
 
-## 本番環境へのデプロイ
+```bash
+node scripts/fetch-airtable-data.js
+```
 
-### Vercelを使用する場合
-1. Vercelのプロジェクト設定で環境変数を追加
-2. `AIRTABLE_API_KEY`, `AIRTABLE_BASE_ID`, `AIRTABLE_SESSIONS_TABLE_NAME` を設定
-
-### GitHub Pagesを使用する場合
-**注意**: GitHub Pagesは静的サイトホスティングのため、APIルートは動作しません。
-代替方法:
-1. VercelまたはNetlifyを使用
-2. ビルド時にAirtableデータを静的に生成
-
-## セキュリティ注意事項
-- `.env.local` ファイルは絶対にGitにコミットしないでください
-- API Keyは公開しないよう注意してください
-- 本番環境では環境変数を適切に管理してください
+このコマンドでエラーメッセージを確認してください。
