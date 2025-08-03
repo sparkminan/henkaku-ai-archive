@@ -140,10 +140,6 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
       {/* アクション */}
       <div className="flex items-center justify-between pt-4 border-t border-cyber-500/30">
         <div className="flex items-center space-x-4 text-sm text-cyan-400">
-          <div className="flex items-center group/action">
-            <FileText className="h-4 w-4 mr-1 group-hover/action:text-neon-green transition-colors duration-300" />
-            <span className="font-cyber text-xs">{session.materials.length}件</span>
-          </div>
           {session.videoUrl && (
             <div className="flex items-center group/action">
               <Play className="h-4 w-4 mr-1 group-hover/action:text-neon-pink transition-colors duration-300" />

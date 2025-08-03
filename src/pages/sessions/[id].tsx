@@ -58,18 +58,6 @@ export default function SessionDetail({ session, relatedSessions = [] }: Session
     return colors[tag.length % colors.length];
   };
 
-  const getMaterialIcon = (type: string) => {
-    switch (type) {
-      case 'slide':
-        return '📊';
-      case 'document':
-        return '📄';
-      case 'code':
-        return '💻';
-      default:
-        return '📎';
-    }
-  };
 
   return (
     <>
@@ -140,10 +128,6 @@ export default function SessionDetail({ session, relatedSessions = [] }: Session
                   <div className="flex items-center">
                     <User className="h-5 w-5 mr-2" />
                     {session.presenter}
-                  </div>
-                  <div className="flex items-center">
-                    <FileText className="h-5 w-5 mr-2" />
-                    {session.materials.length}件の資料
                   </div>
                   {session.videoUrl && (
                     <div className="flex items-center">
@@ -233,60 +217,6 @@ export default function SessionDetail({ session, relatedSessions = [] }: Session
                 </div>
               )}
 
-              {/* 資料 */}
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                  資料・リンク
-                </h2>
-                <div className="space-y-4">
-                  {session.materials.map((material) => (
-                    <div key={material.id} className="card p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <span className="text-2xl mr-3">
-                            {getMaterialIcon(material.type)}
-                          </span>
-                          <div>
-                            <h3 className="font-medium text-gray-900">
-                              {material.title}
-                            </h3>
-                            {material.description && (
-                              <p className="text-sm text-gray-600 mt-1">
-                                {material.description}
-                              </p>
-                            )}
-                            <span className="inline-block mt-1 px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-                              {material.type === 'slide' && 'スライド'}
-                              {material.type === 'document' && 'ドキュメント'}
-                              {material.type === 'code' && 'コード'}
-                              {material.type === 'other' && 'その他'}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <a
-                            href={material.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-secondary flex items-center"
-                          >
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            開く
-                          </a>
-                          <a
-                            href={material.url}
-                            download
-                            className="btn-primary flex items-center"
-                          >
-                            <Download className="h-4 w-4 mr-2" />
-                            ダウンロード
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
               {/* 関連する勉強会 */}
               <div>

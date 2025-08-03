@@ -131,17 +131,6 @@ export default function Home() {
                     <div className="text-cyber-300 font-cyber tracking-wider">SESSIONS</div>
                   </div>
                   
-                  <div className="text-center group">
-                    <div className="flex justify-center mb-4">
-                      <div className="p-4 bg-dark-700 border border-cyber-500/50 rounded-xl group-hover:border-neon-purple group-hover:shadow-neon-purple transition-all duration-300">
-                        <BookOpen className="h-8 w-8 text-neon-purple group-hover:scale-110 transition-transform duration-300" />
-                      </div>
-                    </div>
-                    <div className="text-4xl font-cyber font-bold text-neon-purple mb-2">
-                      {sessions.reduce((total, session) => total + session.materials.length, 0)}
-                    </div>
-                    <div className="text-cyber-300 font-cyber tracking-wider">MATERIALS</div>
-                  </div>
                   
                   <div className="text-center group">
                     <div className="flex justify-center mb-4">
