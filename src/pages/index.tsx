@@ -5,44 +5,20 @@ import { Calendar, Users, BookOpen, TrendingUp, Brain, Zap, CircuitBoard, Cpu } 
 import Layout from '@/components/Layout';
 import StudySessionCard from '@/components/StudySessionCard';
 import { StudySession } from '@/types';
-import { loadAllSessions, getCategories } from '@/utils/dataLoader';
+import { getCategories } from '@/utils/dataLoader';
 import { getImagePath } from '@/utils/config';
-import { useAirtableSessions } from '@/hooks/useAirtableData';
+import { useData } from '@/contexts/DataContext';
 
 export default function Home() {
-  const [recentSessions, setRecentSessions] = useState<StudySession[]>([]);
   const [searchResults, setSearchResults] = useState<StudySession[] | null>(null);
-  const [allSessions, setAllSessions] = useState<StudySession[]>([]);
   
-  // Airtableからデータを取得
-  const { sessions: airtableSessions, loading: airtableLoading, error: airtableError } = useAirtableSessions();
+  // Use DataContext for centralized data management
+  const { sessions, loading, error, lastUpdated } = useData();
 
-  useEffect(() => {
-    // Airtableデータが利用可能な場合は使用、そうでない場合はフォールバック
-    const fetchSessions = async () => {
-      try {
-        let sessions: StudySession[];
-        
-        if (airtableSessions && airtableSessions.length > 0) {
-          // Airtableデータを使用
-          sessions = airtableSessions as StudySession[];
-        } else {
-          // フォールバック: 静的データを使用
-          sessions = await loadAllSessions();
-        }
-        
-        setAllSessions(sessions);
-        // 最新の4件を取得
-        setRecentSessions(sessions.slice(0, 4));
-      } catch (error) {
-        console.error('Failed to load sessions:', error);
-      }
-    };
-    
-    if (!airtableLoading) {
-      fetchSessions();
-    }
-  }, [airtableSessions, airtableLoading]);
+  // Get recent sessions (latest 4)
+  const recentSessions = [...sessions]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 4);
 
   const handleSearch = (query: string) => {
     if (!query.trim()) {
@@ -50,7 +26,7 @@ export default function Home() {
       return;
     }
 
-    const results = allSessions.filter(session =>
+    const results = sessions.filter(session =>
       session.title.toLowerCase().includes(query.toLowerCase()) ||
       session.description.toLowerCase().includes(query.toLowerCase()) ||
       session.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase())) ||
@@ -148,7 +124,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="text-4xl font-cyber font-bold text-neon-blue mb-2">
-                      {allSessions.length}
+                      {sessions.length}
                     </div>
                     <div className="text-cyber-300 font-cyber tracking-wider">SESSIONS</div>
                   </div>
@@ -160,7 +136,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="text-4xl font-cyber font-bold text-neon-purple mb-2">
-                      {allSessions.reduce((total, session) => total + session.materials.length, 0)}
+                      {sessions.reduce((total, session) => total + session.materials.length, 0)}
                     </div>
                     <div className="text-cyber-300 font-cyber tracking-wider">MATERIALS</div>
                   </div>
@@ -172,7 +148,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="text-4xl font-cyber font-bold text-neon-pink mb-2">
-                      {new Set(allSessions.map(s => s.presenter)).size}
+                      {new Set(sessions.map(s => s.presenter)).size}
                     </div>
                     <div className="text-cyber-300 font-cyber tracking-wider">SPEAKERS</div>
                   </div>
@@ -215,14 +191,14 @@ export default function Home() {
                   </p>
                 </div>
 
-                {airtableLoading ? (
+                {loading ? (
                   <div className="flex justify-center items-center py-16">
                     <div className="text-center">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-blue mx-auto mb-4"></div>
                       <p className="text-cyan-300">データを読み込んでいます...</p>
                     </div>
                   </div>
-                ) : airtableError ? (
+                ) : error ? (
                   <div className="text-center py-8">
                     <p className="text-yellow-400 mb-4">データの読み込みに失敗しました。フォールバックデータを使用しています。</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">

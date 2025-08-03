@@ -49,7 +49,15 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
       {session.thumbnailUrl && (
         <div className="relative mb-4 rounded-lg overflow-hidden border border-cyber-500/30 group">
           <img
-            src={getImagePath(session.thumbnailUrl)}
+            src={(() => {
+              // For session 28 in local development, use local SVG
+              if (session.id === '28' && 
+                  session.thumbnailUrl.includes('sparkminan.github.io') && 
+                  process.env.NODE_ENV !== 'production') {
+                return '/images/web3-ai-fusion-thumbnail.svg';
+              }
+              return getImagePath(session.thumbnailUrl);
+            })()}
             alt={session.title}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             onError={(e) => {

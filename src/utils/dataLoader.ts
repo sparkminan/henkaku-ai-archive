@@ -63,3 +63,19 @@ export function getCategories() {
 export function clearSessionsCache() {
   sessionsCache = null;
 }
+
+/**
+ * Synchronous function to load sessions from JSON
+ * This is used for immediate fallback when async loading fails
+ */
+export function loadSessionsFromJson(): StudySession[] {
+  // For now, return the cached sessions if available
+  if (sessionsCache) {
+    return sessionsCache;
+  }
+  
+  // Otherwise, we need to load them synchronously
+  // This is a fallback, so we'll return an empty array if nothing is cached
+  console.warn('No sessions cached, returning empty array');
+  return [];
+}

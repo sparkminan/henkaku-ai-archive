@@ -61,7 +61,30 @@ async function fetchAndSaveAirtableData() {
     fs.writeFileSync(flagPath, 'true');
     
   } catch (error) {
-    console.error('Error fetching data from Airtable:', error);
+    console.error('\n❌ Error fetching data from Airtable:');
+    console.error(`   Type: ${error.error || error.name}`);
+    console.error(`   Message: ${error.message}`);
+    
+    if (error.statusCode) {
+      console.error(`   Status Code: ${error.statusCode}`);
+      
+      switch (error.statusCode) {
+        case 401:
+          console.error('   → Invalid API Key. Please check your AIRTABLE_API_KEY.');
+          break;
+        case 403:
+          console.error('   → Access denied. Check token scopes and permissions.');
+          break;
+        case 404:
+          console.error('   → Base ID or Table name not found.');
+          break;
+        case 422:
+          console.error('   → Invalid request. Check table name and field names.');
+          break;
+      }
+    }
+    
+    console.error('\n   Full error:', error);
     process.exit(1);
   }
 }

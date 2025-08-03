@@ -1,0 +1,115 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0a0e27"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="hexGrid" width="60" height="52" patternUnits="userSpaceOnUse">
+      <polygon points="30,0 45,15 45,37 30,52 15,37 15,15" fill="none" stroke="#1a1f3a" stroke-width="0.5"/>
+    </pattern>
+    
+    <!-- Gradient definitions -->
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="web3Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b00ff;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="glowEffect">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#hexGrid)"/>
+  
+  <!-- Central fusion circle -->
+  <g transform="translate(400, 225)">
+    <!-- Outer glow -->
+    <circle cx="0" cy="0" r="120" fill="url(#glowEffect)" opacity="0.5"/>
+    
+    <!-- Web3 hexagon (left side) -->
+    <g transform="translate(-60, 0)">
+      <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" 
+               fill="none" 
+               stroke="url(#web3Gradient)" 
+               stroke-width="3"/>
+      <!-- Blockchain nodes -->
+      <circle cx="-35" cy="-20" r="5" fill="#ff00ff"/>
+      <circle cx="35" cy="-20" r="5" fill="#ff00ff"/>
+      <circle cx="35" cy="20" r="5" fill="#ff00ff"/>
+      <circle cx="-35" cy="20" r="5" fill="#ff00ff"/>
+      <circle cx="0" cy="-40" r="5" fill="#ff00ff"/>
+      <circle cx="0" cy="40" r="5" fill="#ff00ff"/>
+      <!-- Connection lines -->
+      <line x1="-35" y1="-20" x2="35" y2="-20" stroke="#ff00ff" stroke-width="1" opacity="0.5"/>
+      <line x1="35" y1="-20" x2="35" y2="20" stroke="#ff00ff" stroke-width="1" opacity="0.5"/>
+      <line x1="35" y1="20" x2="-35" y2="20" stroke="#ff00ff" stroke-width="1" opacity="0.5"/>
+      <line x1="-35" y1="20" x2="-35" y2="-20" stroke="#ff00ff" stroke-width="1" opacity="0.5"/>
+    </g>
+    
+    <!-- AI brain (right side) -->
+    <g transform="translate(60, 0)">
+      <!-- Neural network circles -->
+      <circle cx="0" cy="-30" r="8" fill="none" stroke="url(#aiGradient)" stroke-width="2"/>
+      <circle cx="-20" cy="-10" r="6" fill="none" stroke="url(#aiGradient)" stroke-width="2"/>
+      <circle cx="20" cy="-10" r="6" fill="none" stroke="url(#aiGradient)" stroke-width="2"/>
+      <circle cx="-25" cy="15" r="7" fill="none" stroke="url(#aiGradient)" stroke-width="2"/>
+      <circle cx="0" cy="20" r="9" fill="none" stroke="url(#aiGradient)" stroke-width="2"/>
+      <circle cx="25" cy="15" r="7" fill="none" stroke="url(#aiGradient)" stroke-width="2"/>
+      
+      <!-- Neural connections -->
+      <line x1="0" y1="-30" x2="-20" y2="-10" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+      <line x1="0" y1="-30" x2="20" y2="-10" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+      <line x1="-20" y1="-10" x2="-25" y2="15" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+      <line x1="-20" y1="-10" x2="0" y2="20" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+      <line x1="20" y1="-10" x2="25" y2="15" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+      <line x1="20" y1="-10" x2="0" y2="20" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+      <line x1="-25" y1="15" x2="0" y2="20" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+      <line x1="25" y1="15" x2="0" y2="20" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+    </g>
+    
+    <!-- Central fusion symbol -->
+    <g>
+      <!-- Fusion circle -->
+      <circle cx="0" cy="0" r="25" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+      <circle cx="0" cy="0" r="20" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+      
+      <!-- Fusion energy lines -->
+      <line x1="-25" y1="0" x2="-15" y2="0" stroke="#ffffff" stroke-width="2"/>
+      <line x1="25" y1="0" x2="15" y2="0" stroke="#ffffff" stroke-width="2"/>
+      <line x1="0" y1="-25" x2="0" y2="-15" stroke="#ffffff" stroke-width="2"/>
+      <line x1="0" y1="25" x2="0" y2="15" stroke="#ffffff" stroke-width="2"/>
+      
+      <!-- Center fusion point -->
+      <circle cx="0" cy="0" r="8" fill="#ffffff" opacity="0.9"/>
+      <circle cx="0" cy="0" r="5" fill="#0a0e27"/>
+      <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+    </g>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff">
+    Web3 × AI Fusion
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#00d4ff" opacity="0.8">
+    Bridging Blockchain and Artificial Intelligence
+  </text>
+  
+  <!-- Decorative elements -->
+  <g opacity="0.3">
+    <!-- Top left decoration -->
+    <polygon points="50,30 70,30 60,50" fill="#ff00ff"/>
+    <polygon points="80,40 100,40 90,60" fill="#00d4ff"/>
+    
+    <!-- Bottom right decoration -->
+    <polygon points="730,400 750,400 740,420" fill="#00d4ff"/>
+    <polygon points="700,410 720,410 710,430" fill="#ff00ff"/>
+  </g>
+</svg>

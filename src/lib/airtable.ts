@@ -1,94 +1,87 @@
-import Airtable from 'airtable';
+import { AirtableClient } from './airtable-client';
+import { StudySession } from '@/types';
 
-// Airtable configuration
-if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_ID) {
-  console.warn('Airtable configuration is missing. Please check your .env.local file.');
+// Initialize Airtable client
+let client: AirtableClient | null = null;
+
+if (process.env.AIRTABLE_API_KEY && process.env.AIRTABLE_BASE_ID) {
+  try {
+    client = new AirtableClient({
+      apiKey: process.env.AIRTABLE_API_KEY,
+      baseId: process.env.AIRTABLE_BASE_ID,
+      tableName: process.env.AIRTABLE_SESSIONS_TABLE_NAME || 'Sessions',
+    });
+  } catch (error) {
+    console.warn('Failed to initialize Airtable client:', error);
+  }
 }
 
-// Initialize Airtable
-const base = process.env.AIRTABLE_API_KEY && process.env.AIRTABLE_BASE_ID
-  ? new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID)
-  : null;
+// Re-export client for direct access if needed
+export { client as airtableClient };
 
-// Type definitions
-export interface AirtableSession {
-  id: string;
-  fields: {
-    ID: string;
-    Title: string;
-    Date: string;
-    Presenter: string;
-    Description: string;
-    Tags: string;
-    ThumbnailURL: string;
-    PodcastURL?: string;
-    VideoURL?: string;
-    Status: string;
-    Materials?: string;
-  };
-}
-
-// Convert Airtable record to our Session type
-export function airtableToSession(record: AirtableSession) {
-  const fields = record.fields;
-  return {
-    id: fields.ID,
-    title: fields.Title,
-    date: fields.Date,
-    presenter: fields.Presenter,
-    description: fields.Description,
-    tags: fields.Tags ? fields.Tags.split(';').map(tag => tag.trim()) : [],
-    thumbnailUrl: fields.ThumbnailURL,
-    podcastUrl: fields.PodcastURL || undefined,
-    videoUrl: fields.VideoURL || undefined,
-    status: fields.Status,
-    materials: fields.Materials ? fields.Materials.split(',').map(m => m.trim()) : []
-  };
-}
-
-// Fetch all sessions from Airtable
-export async function fetchSessions() {
-  if (!base) {
+// Fetch all sessions
+export async function fetchSessions(): Promise<StudySession[] | null> {
+  if (!client) {
     console.warn('Airtable is not configured, using fallback data');
     return null;
   }
 
   try {
-    const records = await base(process.env.AIRTABLE_SESSIONS_TABLE_NAME || 'Sessions')
-      .select({
-        view: 'Grid view',
-        sort: [{ field: 'ID', direction: 'desc' }]
-      })
-      .all();
-
-    return records.map(record => airtableToSession(record as unknown as AirtableSession));
+    return await client.fetchAll();
   } catch (error) {
     console.error('Error fetching sessions from Airtable:', error);
     return null;
   }
 }
 
-// Fetch a single session by ID
-export async function fetchSessionById(sessionId: string) {
-  if (!base) {
+// Fetch specific session by ID
+export async function fetchSessionById(id: string): Promise<StudySession | null> {
+  if (!client) {
     console.warn('Airtable is not configured, using fallback data');
     return null;
   }
 
   try {
-    const records = await base(process.env.AIRTABLE_SESSIONS_TABLE_NAME || 'Sessions')
-      .select({
-        filterByFormula: `{ID} = '${sessionId}'`,
-        maxRecords: 1
-      })
-      .firstPage();
-
-    if (records.length > 0) {
-      return airtableToSession(records[0] as unknown as AirtableSession);
-    }
-    return null;
+    return await client.fetchById(id);
   } catch (error) {
     console.error('Error fetching session from Airtable:', error);
     return null;
   }
+}
+
+// Fetch recent sessions
+export async function fetchRecentSessions(limit: number = 10): Promise<StudySession[] | null> {
+  if (!client) {
+    return null;
+  }
+
+  try {
+    return await client.fetchRecent(limit);
+  } catch (error) {
+    console.error('Error fetching recent sessions:', error);
+    return null;
+  }
+}
+
+// Fetch sessions by tags
+export async function fetchSessionsByTags(tags: string[]): Promise<StudySession[] | null> {
+  if (!client) {
+    return null;
+  }
+
+  try {
+    return await client.fetchByTags(tags);
+  } catch (error) {
+    console.error('Error fetching sessions by tags:', error);
+    return null;
+  }
+}
+
+// Subscribe to changes (for real-time updates)
+export function subscribeToSessionChanges(callback: (sessions: StudySession[]) => void): () => void {
+  if (!client) {
+    return () => {};
+  }
+
+  return client.subscribeToChanges(callback);
 }
