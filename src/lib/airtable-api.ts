@@ -68,7 +68,7 @@ export async function fetchSessionsFromAirtable(): Promise<StudySession[]> {
       podcastUrl: record.fields.PodcastURL,
       videoUrl: record.fields.VideoURL,
       status: record.fields.Status,
-      materials: record.fields.Materials ? record.fields.Materials.split(',').map(m => m.trim()) : []
+      materials: [] // Materialsフィールドは現在使用していないため空配列
     }));
 
     // IDでソート（降順）
