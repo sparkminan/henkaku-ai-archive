@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar, Users, BookOpen, TrendingUp, Brain, Zap, CircuitBoard, Cpu } from 'lucide-react';
 import Layout from '@/components/Layout';
 import StudySessionCard from '@/components/StudySessionCard';
@@ -103,9 +104,11 @@ export default function Home() {
                   {/* 右側イラスト */}
                   <div className="flex justify-center lg:justify-end">
                     <div className="relative">
-                      <img
+                      <Image
                         src={getImagePath("/images/ai-hero-illustration.svg")}
                         alt="AI Knowledge Network"
+                        width={512}
+                        height={512}
                         className="w-full max-w-lg h-auto floating"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-neon-blue/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>

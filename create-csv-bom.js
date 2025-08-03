@@ -38,7 +38,7 @@ const sessionsCSV = `ID,Title,Date,Presenter,Description,Tags,ThumbnailURL,Podca
 4,生成AI会 Vol.4,2024-01-14,コミュニティメンバー,生成AI技術の最新動向と実践的な活用方法について議論。参加者それぞれの経験と知見を共有し、新たな発見と学びを得る貴重な機会となりました。,生成AI;活用事例,https://sparkminan.github.io/henkaku-ai-archive/images/ai-session-generic.svg,,,Published,
 3,生成AI会 Vol.3,2023-12-17,コミュニティメンバー,生成AI技術の最新動向と実践的な活用方法について議論。参加者それぞれの経験と知見を共有し、新たな発見と学びを得る貴重な機会となりました。,生成AI;活用事例,https://sparkminan.github.io/henkaku-ai-archive/images/ai-session-generic.svg,,,Published,
 2,生成AI会 Vol.2,2023-12-03,コミュニティメンバー,生成AI技術の最新動向と実践的な活用方法について議論。参加者それぞれの経験と知見を共有し、新たな発見と学びを得る貴重な機会となりました。,生成AI;活用事例,https://sparkminan.github.io/henkaku-ai-archive/images/ai-session-generic.svg,,,Published,
-1,生成AI会 Vol.1,2023-11-19,コミュニティメンバー,記念すべき第1回目の生成AI会。HENKAKUコミュニティで生成AI技術について語り合う場として始まりました。この回から現在まで続く貴重な学びの場がスタートしました。,第1回;記念すべき;スタート;創設,https://sparkminan.github.io/henkaku-ai-archive/images/ai-session-generic.svg,,,Published,`;
+1,生成AI会 Vol.1,2024-07-06,コミュニティメンバー,記念すべき第1回目の生成AI会。HENKAKUコミュニティで生成AI技術について語り合う場として始まりました。この回から現在まで続く貴重な学びの場がスタートしました。,第1回;記念すべき;スタート;創設,https://sparkminan.github.io/henkaku-ai-archive/images/ai-session-generic.svg,,,Published,`;
 
 // Materials CSV
 const materialsCSV = `MaterialID,SessionID,Title,Type,URL,Description,Order

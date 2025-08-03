@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Calendar, User, FileText, Play, Download, ExternalLink, ArrowLeft, Headphones } from 'lucide-react';
 import Layout from '@/components/Layout';
@@ -102,9 +103,11 @@ export default function SessionDetail({ session, relatedSessions = [] }: Session
               {/* サムネイル */}
               {session.thumbnailUrl && (
                 <div className="mb-8 rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src={session.thumbnailUrl}
                     alt={session.title}
+                    width={800}
+                    height={256}
                     className="w-full h-64 object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;

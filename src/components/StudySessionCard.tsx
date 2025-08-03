@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar, User, FileText, Play, ExternalLink, Zap, Heart, Headphones } from 'lucide-react';
 import { StudySession } from '@/types';
 import { getImagePath } from '@/utils/config';
@@ -48,7 +49,7 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
       {/* サムネイル */}
       {session.thumbnailUrl && (
         <div className="relative mb-4 rounded-lg overflow-hidden border border-cyber-500/30 group">
-          <img
+          <Image
             src={(() => {
               // For session 28 in local development, use local SVG
               if (session.id === '28' && 
@@ -59,6 +60,8 @@ const StudySessionCard: React.FC<StudySessionCardProps> = ({ session }) => {
               return getImagePath(session.thumbnailUrl);
             })()}
             alt={session.title}
+            width={400}
+            height={192}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
