@@ -22,68 +22,58 @@ interface AirtableResponse {
   records: AirtableRecord[];
 }
 
-// Airtable APIからデータを直接取得する関数
+// 🎆 GAS API経由のリアルタイムAirtableデータ取得
 export async function fetchSessionsFromAirtable(): Promise<StudySession[]> {
   // キャッシュチェック
   const cachedSessions = cache.get<StudySession[]>(CACHE_KEYS.SESSIONS);
   if (cachedSessions) {
-    console.log('Returning cached sessions data');
+    console.log('📦 Returning cached sessions data');
     return cachedSessions;
   }
 
-  const baseId = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID;
-  const tableName = process.env.NEXT_PUBLIC_AIRTABLE_SESSIONS_TABLE_NAME || 'Sessions';
+  const gasApiUrl = process.env.NEXT_PUBLIC_GAS_API_URL;
   
-  // 本番環境では環境変数が設定されていない場合は静的ファイルにフォールバック
-  if (!baseId || typeof window === 'undefined') {
-    console.log('Airtable credentials not available, falling back to static data');
-    return fetchStaticSessions();
-  }
+  // GAS APIが設定されている場合はリアルタイム取得を試行
+  if (gasApiUrl && typeof window !== 'undefined') {
+    try {
+      console.log('🚀 Fetching live data from GAS API...');
+      
+      const response = await fetch(gasApiUrl, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-  try {
-    // CORS対応のためのプロキシAPI経由でAirtableにアクセス
-    const response = await fetch(`/api/airtable/sessions`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
 
-    if (!response.ok) {
-      console.warn('Airtable API failed, falling back to static data');
-      return fetchStaticSessions();
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(`GAS API Error: ${result.error}`);
+      }
+      
+      const sessions = result.data;
+      
+      // キャッシュに保存（3分間）
+      cache.set(CACHE_KEYS.SESSIONS, sessions, 3);
+      
+      console.log(`✨ Successfully loaded ${sessions.length} sessions from GAS API`);
+      console.log('🕰️ Data timestamp:', result.timestamp);
+      return sessions;
+      
+    } catch (error) {
+      console.warn('⚠️ GAS API fetch failed:', error);
+      console.log('📂 Falling back to static data');
     }
-
-    const data: AirtableResponse = await response.json();
-    
-    // Airtableのレスポンスをフォーマット
-    const sessions = data.records.map((record) => ({
-      id: record.fields.ID.toString(),
-      title: record.fields.Title,
-      date: record.fields.Date,
-      presenter: record.fields.Presenter,
-      description: record.fields.Description,
-      tags: record.fields.Tags ? record.fields.Tags.split(';').map(tag => tag.trim()) : [],
-      thumbnailUrl: record.fields.ThumbnailURL,
-      podcastUrl: record.fields.PodcastURL,
-      videoUrl: record.fields.VideoURL,
-      status: record.fields.Status,
-      materials: [] // Materialsフィールドは現在使用していないため空配列
-    }));
-
-    // IDでソート（降順）
-    const sortedSessions = sessions.sort((a, b) => parseInt(b.id) - parseInt(a.id));
-    
-    // キャッシュに保存（5分間）
-    cache.set(CACHE_KEYS.SESSIONS, sortedSessions, 5);
-    
-    return sortedSessions;
-    
-  } catch (error) {
-    console.error('Error fetching from Airtable:', error);
-    console.log('Falling back to static data');
-    return fetchStaticSessions();
+  } else {
+    console.log('🔧 GAS API URL not configured, using static data');
   }
+  
+  // フォールバック: 静的ファイルを使用
+  return fetchStaticSessions();
 }
 
 // 静的JSONファイルからデータを取得（フォールバック）
